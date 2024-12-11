@@ -1,0 +1,530 @@
+/* CSS for Login */
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to right, #d5dae3, #323583);
+    /* background-color: #103797df; */
+}
+
+.loginImage {
+    flex: 0 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 65%;
+    margin: 0rem;
+}
+
+.loginImage img {
+    width: 85%;
+    height: 90vh;
+    margin: 0rem;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 5px 1px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.loginContainer {
+    margin: .5rem;
+    height: 100vh;
+    padding: 1rem 0rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.loginHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 0 1 auto;
+}
+
+.loginHeader h1 {
+    /* color: #d5dae3cf; */
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+.loginHeader p {
+    /* color:  #d5dae3cf; */
+    font-size: 1.2rem;
+    align-self: center;
+    font-weight: 600;
+    margin: 2rem;
+
+    /* color: aliceblue; */
+}
+
+.formContainer {
+    margin: 0rem;
+    width: 100%;
+    border: #000000 2px solid;
+    /* color: #d5dae3cf; */
+    flex: 1 1 auto;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #4e3a9517;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* color: aliceblue; */
+}
+
+.formContainer h3 {
+    /* color: #d5dae3cf; */
+    /* margin-bottom: 1rem; */
+    font-size: 2rem;
+    /* color: rgb(255, 255, 255); */
+
+}
+
+.loginForm {
+    width: 100%;
+    /* color: #d5dae3cf;    */
+    flex: 1 1 auto;
+    /* color: rgb(255, 255, 255); */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.loginForm h2 {
+    /* color: #d5dae3cf; */
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: transparent;
+}
+
+.loginForm input {
+    height: 3.5rem;
+    /* color: #d5dae3cf; */
+    padding: 10px 20px;
+    margin-top: 0px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    border: 3px solid#1d1d1fcf;
+    background: transparent;
+}
+
+.loginForm input::placeholder {
+    height: 3.5rem;
+    text-align: left;
+    color: #d5dae385;
+    margin-top: 0px;
+    font-size: 1.3rem;
+    background: transparent;
+}
+
+.loginForm button {
+    height: 3.5rem;
+    padding: 10px 20px;
+    margin-top: 1rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    background-color: #6876df;
+    box-shadow: #070607 1px 1px 0px 0px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: transform .2s ease-in-out;
+}
+
+.loginForm button:hover {
+    transform: scale(1.02);
+    color: #ffffff;
+    background-color: #3143a8d5;
+    /* box-shadow: #070607 0px 2px 0px 1px; */
+}
+
+/* ----------------CSS For Dashboard------------------- */
+
+.dashboardContainer {
+    /* background-image: linear-gradient(to left, #442d2d, #29222e); */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #565f8f2c;
+    /* margin: 0rem 1rem; */
+    /* overflow: hidden; */
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 1rem; */
+    /* gap: 5rem; */
+    width: 100%;
+    /* border-radius: 10px 10px 0px 0px; */
+    padding: 3rem;
+    /* box-shadow: #070607 0px 0px 3px 0px; */
+    /* border: 1px solid #373a37; */
+    background-color:#282e3f;
+    color: rgb(183, 180, 180);
+    ;
+}
+
+.dashboardHeading {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboardHeading h1 {
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: 600;
+    /* background-color: #191816; */
+}
+
+.dashboardHeading p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    /* background-color: #191816; */
+}
+
+.logoutBtn {
+
+    flex: 0 0 auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .1s ease-in-out;
+    border-radius: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    transition: transform .1s ease-in-out;
+}
+
+.logoutBtn svg {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    font-size: 1rem;
+}
+
+.logoutBtn:hover {
+    /* background-color: #e1c1c1; */
+    transform: scale(1.1);
+}
+
+.dashboardBody {
+    display: flex;
+    width: 100%;
+    /* border-radius: 10px; */
+    /* gap: 1rem; */
+    /* border: 1px solid #373a37; */
+}
+
+.dashboardController {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-shadow: 2px 0px 0px 0px rgba(0, 0, 0, 0.75);
+    background-color: #1c2437;
+    color: rgba(194, 193, 193, 0.863);
+    /* border-radius: 10px 0px 0 10px; */
+    padding: 1rem;
+    /* border: 1px solid #373a37; */
+    /* border-right: #49494948 1px solid; */
+}
+
+.dashboardController h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: left;
+    width: 100%;
+    border-radius: 10px;
+    padding: .5rem;
+    padding-bottom: 1rem;
+    background-color: #00000067;
+    /* border-bottom: 1px solid #373a37; */
+}
+
+.dashboardControls {
+    padding: 1rem;
+}
+
+.allControls {
+    /* flex: 1 1 auto; */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.allControls li {
+    flex: 1 0 auto;
+    /* border-bottom: 1px solid #373a37; */
+    width: 100%;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    list-style: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Targetting all the Icons */
+.allControls li:nth-child(n) :first-child {
+    /* border: 1px solid #3c9c3c; */
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* .allControls li:hover {
+    background-color: rgba(145, 129, 129, 0.882);
+} */
+
+.allControls li a {
+    color: rgb(164, 154, 154);
+    align-items: center;
+    padding: 1rem;
+    display: flex;
+    gap: .5rem;
+    text-decoration: none;
+    transition: all .1s ease-in-out;
+}
+
+.allControls li a:hover {
+    box-shadow: #000000 2px 2px 2px 2px;
+    border-radius: 10px;
+    color:rgba(194, 193, 193, 0.863);
+    /* background: transparent; */
+    /* width: 100%; */
+    /* border-bottom: 1px solid #373a37; */
+    background-color: #111521;
+    transform: scale(1.01);
+}
+
+.allControls li:last-child {
+    background-color: rgba(171, 48, 48, 0.882);
+    width: max-content;
+    border-radius: 10px;
+}
+
+.allControls li:last-child:hover {
+    background-color: rgba(177, 20, 20, 0.882) !important;
+    transform: scale(1.02);
+}
+
+.dashboardContent {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    /* gap: 1rem; */
+    overflow: scroll;
+    scrollbar-width: none;
+    /* border-radius: 0px 10px 10px 0px; */
+    /* padding: 0 .5rem; */
+    /* border: 1px solid #373a37; */
+}
+
+.routeHeader {
+    /* flex: 1 1 auto; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* border-radius: 0 0px 10px 10px; */
+    padding: 2rem 2rem;
+    gap: 1rem;
+    /* box-shadow: rgba(149, 149, 149, 0.779) 0px 1px 1px 0px; */
+    /* border: 1px solid #373a37; */
+}
+
+.routeHeader h3 {
+    /* margin: 1rem 0; */
+    font-size: 3rem;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 4px;
+    padding: .5rem;
+    /* border-bottom: 1px solid #373a37; */
+    background-color: #62799b67;
+}
+
+.routeHeader p {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: .5rem;
+}
+
+.routeContent {
+    /* width: 100%; */
+    /* height: 100vh; */
+    flex: 1 1 auto;
+    padding: 2rem;
+    gap: 2rem;
+    /* border: 1px solid #373a37; */
+    /* border-radius: 10px; */
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+/* --------Writting CSS for DashboardHome component-------- */
+
+.dashboardHome {
+    /* flex: 1 1 auto; */
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 1px solid #373a37; */
+    align-items: flex-start;
+}
+
+.tableContainer {
+    /* flex: 1 1 auto; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* gap: 1rem; */
+    /* border: 1px solid #373a37; */
+    align-items: flex-start;
+}
+
+.tableContainer h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 4px;
+    padding: .5rem;
+    /* border-bottom: 1px solid #373a37; */
+    background-color: #62799b67;
+}
+
+.tableData {
+    width: 100%;
+    display: flex;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+table {
+    flex: 1 1 auto;
+    /* border: 1px solid #b6c3b6; */
+    width: 100%;
+    border-radius: 10px;
+}
+
+th {
+    padding: .7rem;
+    /* color: #ffffffb1; */
+    color: #222020;
+    font-size: 1.7rem;
+    border-bottom: 1px solid rgb(215, 201, 201);
+}
+
+td {
+    padding: .6rem;
+    /* color: #ffffffa2; */
+    color: #222020;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.hardwareInfo {
+    width: 100%;
+    flex: 1 1 auto;
+    /* border: 1px solid #b6c3b6; */
+    width: 100%;
+}
+
+.hardwareInfo p {
+    font-size: 1.2rem;
+    width: 100%;
+    padding: .9rem;
+    /* border-bottom: 1px solid #cfd4cf6f; */
+
+}
+
+/* Media Query for small screens */
+
+@media only screen and (max-width: 600px) {
+    .dashboardContainer {
+        padding: 0.5rem;
+        margin: 0;
+        gap: 1rem;
+    }
+
+    .dashboardHeader {
+        margin: 0;
+        box-shadow: #373a37 0px 0px 5px 0px;
+    }
+
+    .dashboardHeader h1 {
+        font-size: 2rem;
+        margin: 0rem;
+    }
+
+    .dashboardHeader p {
+        font-size: 1rem;
+        text-align: center;
+        margin: 0rem;
+    }
+
+    .dashboardBody {
+        flex-direction: column;
+    }
+
+    .dashboardController {
+        display: none;
+    }
+
+    .dashboardContent {
+        border-radius: 5px;
+        padding: 0rem;
+        gap: 1rem;
+    }
+
+    .routeHeader {
+        padding: .5rem;
+        border-radius: 5px;
+    }
+
+    .routeHeader h3 {
+        font-size: 1.5rem;
+    }
+
+    .routeHeader p {
+        font-size: 1rem;
+    }
+
+    .logoutBtn {
+        width: 5rem;
+        height: 5rem;
+        display: none;
+        width: 0;
+    }
+
+    .logoutBtn svg {
+        width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+        font-size: 1rem;
+    }
+}

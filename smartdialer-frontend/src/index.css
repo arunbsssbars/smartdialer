@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* Theme 1: Light Theme */
+/* :root {
+  --bg: #ffffff;
+  --heading: #333333;
+  --text: #555555;
+  --hover: #f0f0f0;
+} */
+
+/* Theme 2: Dark Theme */
+:root.dark-theme {
+  --bg: #121212;
+  --heading: #f5f5f5;
+  --text: #cccccc;
+  --hover: #1e1e1e;
+}
+
+/* Theme 3: Blue Sky Theme */
+/* :root.blue-sky-theme {
+  --bg: #e0f7fa;
+  --heading: #00796b;
+  --text: #004d40;
+  --hover: #b2dfdb;
+} */
+
+/* Theme 4: Earthy Theme */
+/* :root.earthy-theme {
+  --bg: #fef7e7;
+  --heading: #8d6e63;
+  --text: #6d4c41;
+  --hover: #d7ccc8;
+} */
+
+/* Theme 5: High Contrast Theme */
+/* :root.high-contrast-theme {
+  --bg: #000000;
+  --heading: #ffcc00;
+  --text: #ffffff;
+  --hover: #333333;
+} */
+
+/* Usage Example: Apply the theme class to body */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+h1, h2, h3 {
+  color: var(--heading);
+}
+
+a:hover {
+  background-color: var(--hover);
+}
+button:hover {
+  background-color: var(--hover);
+}
