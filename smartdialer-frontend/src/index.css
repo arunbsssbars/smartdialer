@@ -16,7 +16,7 @@
 /* Theme 2: Dark Theme */
 :root.dark-theme {
   --bg: #121212;
-  --heading: #f5f5f5;
+  --heading: #f5f5f5; 
   --text: #cccccc;
   --hover: #1e1e1e;
 }
