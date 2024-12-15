@@ -29,56 +29,55 @@ const Dashboard = () => {
             <div className="dashboardControls">
               <ul className="allControls">
                 <li>
-                  <Link to="/">
+                  <Link to="/dashboard">
                     <LuLayoutDashboard />
                     Dashboard
                   </Link>
                 </li>
                 <li>
-                  <Link to="/show-channels">
+                  <Link to="/dashboard/show-channels">
                     <RiWechatChannelsFill />
                     Show Channels
                   </Link>
                 </li>
                 <li>
-                  <Link to="/show-peers">
+                  <Link to="/dashboard/show-peers">
                     <SiPeerlist />
                     Show Peers
                   </Link>
                 </li>
                 <li>
-                  <Link to="/manage-filters">
+                  <Link to="/dashboard/manage-filters">
                     <CiFilter />
                     Manage Filters
                   </Link>
                 </li>
                 <li>
-                  <Link to="/clear-cdr">
-                    {" "}
+                  <Link to="/dashboard/clear-cdr">
                     <GiCardDiscard />
                     Clear CDR
                   </Link>
                 </li>
                 <li>
-                  <Link to="/clear-filter">
+                  <Link to="/dashboard/clear-filter">
                     <AiOutlineClear />
                     Clear Filter
                   </Link>
                 </li>
                 <li>
-                  <Link to="/restart-db">
+                  <Link to="/dashboard/restart-db">
                     <VscDebugRestart />
                     Restart DB
                   </Link>
                 </li>
                 <li>
-                  <Link to="/restart-switch">
+                  <Link to="/dashboard/restart-switch">
                     <LiaHourglassStartSolid />
                     Restart Switch
                   </Link>
                 </li>
                 <li>
-                  <Link to="/reboot-server">
+                  <Link to="/dashboard/reboot-server">
                     <BsBootstrap />
                     Reboot
                   </Link>

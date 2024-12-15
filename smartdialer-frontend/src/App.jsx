@@ -9,8 +9,9 @@ import RestartDB from "./Components/RestartDB";
 import RestartSwitch from "./Components/RestartSwitch";
 import Reboot from "./Components/Reboot";
 import Login from "./Components/Login";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import DashboardHome from "./Components/DashboardHome";
+import LiveAgentsInfo from "./Components/LiveAgentsInfo";
 
 function App() {
   return (
@@ -18,16 +19,18 @@ function App() {
       <BrowserRouter>
         {/* <Login/> */}
         <Routes>
-          <Route path="/" element={<Dashboard />}>
-            <Route path="/" element={<DashboardHome />} />
-            <Route path="/show-channels" element={<ShowChannels />} />
-            <Route path="/show-peers" element={<ShowPeers />} />
-            <Route path="/manage-filters" element={<ManageFilters />} />
-            <Route path="/clear-cdr" element={<ClearCDR />} />
-            <Route path="/clear-filter" element={<ClearFilter />} />
-            <Route path="/restart-db" element={<RestartDB />} />
-            <Route path="/restart-switch" element={<RestartSwitch />} />
-            <Route path="/reboot-server" element={<Reboot />} />
+          <Route path="/" element={<Navigate to='/dashboard' replace/>}/>
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route index element={<DashboardHome />} />
+            <Route path="/dashboard/show-channels" element={<ShowChannels />} />
+            <Route path="/dashboard/show-peers" element={<ShowPeers />} />
+            <Route path="/dashboard/manage-filters" element={<ManageFilters />} />
+            <Route path="/dashboard/clear-cdr" element={<ClearCDR />} />
+            <Route path="/dashboard/clear-filter" element={<ClearFilter />} />
+            <Route path="/dashboard/restart-db" element={<RestartDB />} />
+            <Route path="/dashboard/restart-switch" element={<RestartSwitch />} />
+            <Route path="/dashboard/reboot-server" element={<Reboot />} />
+            <Route path="/dashboard/agent-live" element={<LiveAgentsInfo />} />
           </Route>
         </Routes>
       </BrowserRouter>

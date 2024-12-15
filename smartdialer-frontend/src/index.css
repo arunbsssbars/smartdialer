@@ -1,25 +1,32 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 /* Theme 1: Light Theme */
-/* :root {
-  --bg: #ffffff;
-  --heading: #333333;
-  --text: #555555;
-  --hover: #f0f0f0;
-} */
+:root {
+  --bg: #F4F5F8;
+  --text: rgb(34, 32, 32);
+  --heading: #19191c;
+  --headingBg: rgb(219, 219, 223);
+  --hover: #23283a;
+  --sidebarBg: #1C2437;
+  --siddebarText: #9292aa;
+  --headerBg: #0e172f;
+  --headerText: #bcbccf;
+  --tableHover: rgb(236, 236, 243);
+}
 
 /* Theme 2: Dark Theme */
-:root.dark-theme {
+/* :root.dark-theme {
   --bg: #121212;
   --heading: #f5f5f5; 
   --text: #cccccc;
   --hover: #1e1e1e;
-}
+} */
 
 /* Theme 3: Blue Sky Theme */
 /* :root.blue-sky-theme {
@@ -51,13 +58,12 @@ body {
   color: var(--text);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--heading);
-}
-
-a:hover {
-  background-color: var(--hover);
-}
-button:hover {
-  background-color: var(--hover);
+  background-color: var(--headingBg);
 }

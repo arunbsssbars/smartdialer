@@ -154,23 +154,15 @@
     justify-content: space-around;
     align-items: center;
     min-height: 100vh;
-    background-color: #E7E8EF;
 }
 
 header {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-bottom: 1rem; */
-    /* gap: 5rem; */
     width: 100%;
-    /* border-radius: 10px 10px 0px 0px; */
     padding: 2rem;
-    /* box-shadow: #070607 0px 0px 3px 0px; */
-    /* border: 1px solid #373a37; */
-    background-color: #0e172f;
-    color: rgb(199, 191, 191);
-    ;
+    background-color: var(--headerBg);
 }
 
 .dashboardHeading {
@@ -185,13 +177,14 @@ header {
     text-align: center;
     font-size: 3.5rem;
     font-weight: 600;
-    /* background-color: #191816; */
+    background: transparent;
+    color: var(--headerText);
 }
 
 .dashboardHeading p {
     font-size: 1.1rem;
     font-weight: 600;
-    /* background-color: #191816; */
+    color: var(--headerText);
 }
 
 .logoutBtn {
@@ -203,6 +196,7 @@ header {
     border-radius: 15%;
     width: 3rem;
     height: 3rem;
+    margin: 1rem;
     transition: transform .1s ease-in-out;
     background: transparent;
 
@@ -213,21 +207,17 @@ header {
     height: 2rem;
     border-radius: 50%;
     font-size: 1rem;
-    color: rgb(199, 191, 191);
+    color: var(--headerText);
 }
 
 .logoutBtn:hover {
     /* background-color: #e1c1c1; */
     transform: scale(1.05);
-    background-color: #1b2135;
 }
 
 .dashboardBody {
     display: flex;
     width: 100%;
-    /* border-radius: 10px; */
-    /* gap: 1rem; */
-    /* border: 1px solid #373a37; */
 }
 
 .dashboardController {
@@ -235,13 +225,8 @@ header {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    /* box-shadow: 4px 0px 7px 0px rgba(0, 0, 0, 0.75); */
-    background-color: #1c2437;
-    color: rgba(194, 193, 193, 0.863);
-    /* border-radius: 10px 0px 0 10px; */
+    background-color: var(--sidebarBg);
     padding: 1rem;
-    /* border: 1px solid #373a37; */
-    /* border-right: #49494948 1px solid; */
 }
 
 .dashboardController h2 {
@@ -252,7 +237,8 @@ header {
     border-radius: 10px;
     padding: .5rem;
     padding-bottom: 1rem;
-    background-color: #0E172F;
+    background-color: var(--headerBg);
+    color: var(--headerText);
     /* border-bottom: 1px solid #373a37; */
 }
 
@@ -299,7 +285,7 @@ header {
 } */
 
 .allControls li a {
-    color: rgb(164, 154, 154);
+    color: var(--siddebarText);
     align-items: center;
     padding: 1rem;
     display: flex;
@@ -315,7 +301,7 @@ header {
     /* background: transparent; */
     /* width: 100%; */
     /* border-bottom: 1px solid #373a37; */
-    background-color: #23283a;
+    background-color: var(--hover);
     transform: scale(1.01);
 }
 
@@ -350,7 +336,7 @@ header {
     align-items: flex-start;
     /* border-radius: 0 0px 10px 10px; */
     padding: 2rem 2rem;
-    gap: 1rem;
+    gap: .5rem;
     /* box-shadow: rgba(149, 149, 149, 0.779) 0px 1px 1px 0px; */
     /* border: 1px solid #373a37; */
 }
@@ -363,7 +349,7 @@ header {
     border-radius: 4px;
     padding: .5rem;
     /* border-bottom: 1px solid #373a37; */
-    background-color: #62799b67;
+    /* background-color: #62799b67; */
 }
 
 .routeHeader p {
@@ -377,7 +363,7 @@ header {
     /* height: 100vh; */
     flex: 1 1 auto;
     padding: 2rem;
-    gap: 2rem;
+    gap: 1rem;
     /* border: 1px solid #373a37; */
     /* border-radius: 10px; */
     overflow: scroll;
@@ -413,7 +399,6 @@ header {
     border-radius: 4px;
     padding: .5rem;
     /* border-bottom: 1px solid #373a37; */
-    background-color: #62799b67;
 }
 
 .tableData {
@@ -432,8 +417,6 @@ table {
 
 th {
     padding: .7rem;
-    /* color: #ffffffb1; */
-    color: #222020;
     font-size: 1.7rem;
     border-bottom: 1px solid rgb(215, 201, 201);
 
@@ -443,20 +426,51 @@ td {
     border-spacing: 0;
     padding: .6rem;
     /* color: #ffffffa2; */
-    color: #222020;
     font-size: 1.5rem;
     text-align: center;
     border-bottom: 1px solid rgba(215, 201, 201, 0.396);
+
 
 }
 
 tr {
     border-spacing: 0;
+    transition: all .1s ease-in-out;
 }
 
 tr:hover {
-    background-color: #dadbe67b;
+    background-color: var(--tableHover);
+    color: var(--heading);
 }
+
+.btnContainer {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: flex-start;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+}
+
+.btn {
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: var(--sidebarBg);
+    color: var(--headerText);
+    transition: all .2s ease-in-out;
+
+}
+
+.btn:hover {
+    background-color: var(--headerBg);
+    color: var(--bg);
+}
+
+
 
 .hardwareInfo {
     width: 100%;

@@ -1,57 +1,68 @@
+import axios from "axios";
 import React from "react";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router";
+import LiveAgentsInfo from "./LiveAgentsInfo";
 
 const DashboardHome = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState("true");
+  const navigate = useNavigate();
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
+    axios
+      .get("/api/dashboard")
+      .then(function (response) {
+        setData(response.data.data.results);
+        console.log(response.data.data.results);
+        setLoading(false);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  };
   return (
     <div className="dashboardHome">
       <div className="tableContainer">
         <h2>Online Agent Info</h2>
-        <div className="tableData">
-          <table>
-            <thead>
-              <tr>
-                <th>Group</th>
-                <th>Active Count</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>group1</td>
-                <td>54</td>
-                <td>Inactive</td>
-              </tr>
-              <tr>
-                <td>group1</td>
-                <td>1</td>
-                <td>free</td>
-              </tr>
-              <tr>
-                <td>group2</td>
-                <td>50</td>
-                <td>Inactive</td>
-              </tr>
-              <tr>
-                <td>group3</td>
-                <td>50</td>
-                <td>Inactive</td>
-              </tr>
-              <tr>
-                <td>group4</td>
-                <td>50</td>
-                <td>Inactive</td>
-              </tr>
-              <tr>
-                <td>group5</td>
-                <td>50</td>
-                <td>Inactive</td>
-              </tr>
-              <tr>
-                <td>group6</td>
-                <td>50</td>
-                <td>Inactive</td>
-              </tr>
-            </tbody>
-          </table>
+        {loading ? (
+          <h1 style={{ margin: " 10rem", background: "transparent" }}>
+            Loading...
+          </h1>
+        ) : (
+          <div className="tableData">
+            <table>
+              <thead>
+                <tr>
+                  <th>Group</th>
+                  <th>Active Count</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.groups}</td>
+                    <td>{item.ActiveCount}</td>
+                    <td>{item.active}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        <div className="btnContainer">
+          <Link to="/dashboard/agent-live">
+            <button className="btn"> Realtime Agent Information</button>
+          </Link>
+          <button className="btn"> Live Agent Compact View</button>
         </div>
       </div>
       <div className="tableContainer">
@@ -77,6 +88,14 @@ const DashboardHome = () => {
               </tr>
             </tbody>
           </table>
+        </div>
+        <div className="btnContainer">
+          <Link>
+            <button className="btn"> Map Call Controls</button>
+          </Link>
+          <Link>
+            <button className="btn"> Calls from Provider</button>
+          </Link>
         </div>
       </div>
       <div className="tableContainer">
