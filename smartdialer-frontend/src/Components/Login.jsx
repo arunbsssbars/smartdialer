@@ -2,7 +2,7 @@ import React from "react";
 
 const Login = () => {
   return (
-    <div className="mainContainer">
+    <div className="formMainContainer">
       <div className="loginImage">
         <img src=".\src\assets\login8.jpg" />
       </div>

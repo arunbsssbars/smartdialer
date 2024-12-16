@@ -23,14 +23,15 @@ const DashboardHome = () => {
       .catch(function (error) {
         // handle error
         console.log(error);
-      })
-      .finally(function () {
-        // always executed
       });
   };
   return (
-    <div className="dashboardHome">
-      <div className="tableContainer">
+    <div className="mainContainer">
+      <div className="contentContainer">
+        <h2>Realtime Callstats</h2>
+        <p>Realtime Call Connectivity and User Status Display</p>
+      </div>
+      <div className="contentContainer">
         <h2>Online Agent Info</h2>
         {loading ? (
           <h1 style={{ margin: " 10rem", background: "transparent" }}>
@@ -65,7 +66,7 @@ const DashboardHome = () => {
           <button className="btn"> Live Agent Compact View</button>
         </div>
       </div>
-      <div className="tableContainer">
+      <div className="contentContainer">
         <h2>Call Distribution</h2>
         <div className="tableData">
           <table>
@@ -98,7 +99,7 @@ const DashboardHome = () => {
           </Link>
         </div>
       </div>
-      <div className="tableContainer">
+      <div className="contentContainer">
         <h2>Hardware Information</h2>
         <div className="hardwareInfo">
           <p>Architecture: x86_64</p>

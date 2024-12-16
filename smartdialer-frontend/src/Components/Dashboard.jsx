@@ -86,13 +86,7 @@ const Dashboard = () => {
             </div>
           </nav>
           <div className="dashboardContent">
-            <div className="routeHeader">
-              <h3>Realtime Callstats</h3>
-              <p>Realtime Call Connectivity and User Status Display</p>
-            </div>
-            <div className="routeContent">
-              <Outlet />
-            </div>
+          <Outlet />
           </div>
         </div>
       </div>
