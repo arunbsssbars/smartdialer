@@ -17,7 +17,7 @@ app.use(cookieParser());
 //routes import
 import userRouter from './routes/user.routes.js'
 import dashboardRouter from "./routes/dashboard.routes.js"
-import { executeQuery } from "./db/queryHandler.js"
+
 //routes declaration
 app.use("/api/users", userRouter)
 app.use("/api/dashboard", dashboardRouter)

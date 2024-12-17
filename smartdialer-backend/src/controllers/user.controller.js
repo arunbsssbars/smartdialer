@@ -7,84 +7,53 @@ import jwt from "jsonwebtoken"
 import { executeQuery } from "../db/queryHandler.js";
 // import mongoose from "mongoose";
 
+const loginUser = asyncHandler(async (req, res) => {
 
-// const generateAccessAndRefereshTokens = async (userId) => {
-//     try {
-//         const user = await User.findById(userId)
-//         const accessToken = user.generateAccessToken()
-//         const refreshToken = user.generateRefreshToken()
+    const { email, password } = req.body
+    console.log(email, password);
 
-//         user.refreshToken = refreshToken
-//         await user.save({ validateBeforeSave: false })
-
-//         return { accessToken, refreshToken }
+    if (!email && !password) {
+        throw new ApiError(400, "email or password is required")
+    }
 
 
-//     } catch (error) {
-//         throw new ApiError(500, "Something went wrong while generating referesh and access token")
-//     }
-// }
+    // checking if it is a valid user 
+    const queryUser = 'SELECT id, username, usertype, allowed_procss, dialing_dest, status FROM dialme WHERE username = ?';
+    const [[user]] = await executeQuery(queryUser, [email]);
+
+    if (!user) {
+        throw new ApiError(404, "User does not exist")
+    }
+
+    //  checking if it is a user with valid password
+    const userValidationQuery = 'SELECT * FROM dialme WHERE id = ?';
+    const [[validUser]] = await executeQuery(userValidationQuery, [user.id]);
+    const isPasswordValid = validUser.passcode === password;
+
+    if (!isPasswordValid) {
+        throw new ApiError(401, "Invalid user credentials")
+    }
+
+    // Generate Access tokens
+    const accessToken = jwt.sign({ id: validUser.id, username: validUser.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.ACCESS_TOKEN_EXPIRY });
+
+    const loggedInUser = user; //from queryUser
 
 
-// const loginUser = asyncHandler(async (req, res) => {
-//     // req body -> data
-//     // username or email
-//     //find the user
-//     //password check
-//     //access and referesh token
-//     //send cookie
+    return res
+        .status(200)
+        .cookie("accessToken", accessToken)
+        .json(
+            new ApiResponse(
+                200,
+                {
+                    user: loggedInUser, accessToken
+                },
+                "User logged In Successfully"
+            )
+        )
 
-//     const { email, username, password } = req.body
-//     console.log(email);
-
-//     if (!username && !email) {
-//         throw new ApiError(400, "username or email is required")
-//     }
-
-//     // Here is an alternative of above code based on logic discussed in video:
-//     // if (!(username || email)) {
-//     //     throw new ApiError(400, "username or email is required")
-
-//     // }
-
-//     const user = await User.findOne({
-//         $or: [{ username }, { email }]
-//     })
-
-//     if (!user) {
-//         throw new ApiError(404, "User does not exist")
-//     }
-
-//     const isPasswordValid = await user.isPasswordCorrect(password)
-
-//     if (!isPasswordValid) {
-//         throw new ApiError(401, "Invalid user credentials")
-//     }
-
-//     const { accessToken, refreshToken } = await generateAccessAndRefereshTokens(user._id)
-
-//     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
-
-//     const options = {
-//         httpOnly: true,
-//         secure: true
-//     }
-
-//     return res
-//         .status(200)
-//         .cookie("accessToken", accessToken, options)
-//         .cookie("refreshToken", refreshToken, options)
-//         .json(
-//             new ApiResponse(
-//                 200,
-//                 {
-//                     user: loggedInUser, accessToken, refreshToken
-//                 },
-//                 "User logged In Successfully"
-//             )
-//         )
-
-// })
+})
 
 // const logoutUser = asyncHandler(async (req, res) => {
 //     await User.findByIdAndUpdate(
@@ -159,7 +128,7 @@ import { executeQuery } from "../db/queryHandler.js";
 
 // })
 
-  const getAllUsers = asyncHandler(async (req, res) => {
+const getAllUsers = asyncHandler(async (req, res) => {
     try {
         const query = 'SELECT * FROM sipusers';
         const [results] = await executeQuery(query);
@@ -170,7 +139,7 @@ import { executeQuery } from "../db/queryHandler.js";
                     200,
                     { results },
                     "All Users Data Fetched successfully"
-                ) 
+                )
             )
     } catch (error) {
         throw new ApiError(501, error?.message || "Internal Server Error")
@@ -205,7 +174,7 @@ import { executeQuery } from "../db/queryHandler.js";
 
 
 export {
-    //     loginUser,
+    loginUser,
     //     logoutUser,
     //     refreshAccessToken,    
     getAllUsers,

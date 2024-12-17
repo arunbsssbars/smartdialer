@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {
-//     loginUser,
+       loginUser,
 //     logoutUser,
 //     registerUser,
 //     refreshAccessToken,
@@ -19,7 +19,7 @@ import {
 const userRouter = Router()
 
 
-// router.route("/login").post(loginUser)
+userRouter.route("/login").post(loginUser)
 
 //secured routes
 

@@ -17,8 +17,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {/* <Login/> */}
-        <Routes>
+        <Login/>
+        {/* <Routes>
           <Route path="/" element={<Navigate to='/dashboard' replace/>}/>
           <Route path="/dashboard" element={<Dashboard />}>
             <Route index element={<DashboardHome />} />
@@ -32,7 +32,7 @@ function App() {
             <Route path="/dashboard/reboot-server" element={<Reboot />} />
             <Route path="/dashboard/agent-live" element={<LiveAgentsInfo />} />
           </Route>
-        </Routes>
+        </Routes> */}
       </BrowserRouter>
     </>
   );
