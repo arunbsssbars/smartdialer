@@ -1,17 +1,29 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
-const Login = () => {
+const Login = ({setToken}) => {
+  const navigate = useNavigate();
   const [formData, setformData] = useState({
     email: "",
     password: "",
   });
   const handleForm = async (e) => {
     e.preventDefault();
-    const response = await axios.post("/api/users/login", formData);
-    console.log(response.data.data.accessToken);
-    console.log(response.data.data.user);
+    try {
+      const response = await axios.post("/api/users/login", formData);
+      setToken(response.data.data.accessToken);      
+      // window.location.href='/dashboard'
+      setformData({
+        email: "",
+        password: "",
+      })
+      // navigate('/dashboard');
+    } catch (error) {
+      console.error("Error logging in:", error);
+      alert('Invalid credentials!');
+    }
   };
 
   const handleOnChange = (e) => {

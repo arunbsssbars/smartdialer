@@ -10,7 +10,9 @@ import { RiWechatChannelsFill } from "react-icons/ri";
 import { LuLayoutDashboard } from "react-icons/lu";
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-const Dashboard = () => {
+const Dashboard = ({handleLogout}) => {
+
+
   return (
     <>
       <div className="dashboardContainer">
@@ -19,7 +21,7 @@ const Dashboard = () => {
             <h1>Smart Premium Dashboard</h1>
             <p>Automatic AI Based Call Distribution App</p>
           </div>
-          <button className="logoutBtn">
+          <button className="logoutBtn" onClick={()=>handleLogout()}>
             <ImSwitch />
           </button>
         </header>
@@ -86,7 +88,7 @@ const Dashboard = () => {
             </div>
           </nav>
           <div className="dashboardContent">
-          <Outlet />
+            <Outlet />
           </div>
         </div>
       </div>
@@ -95,4 +97,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-

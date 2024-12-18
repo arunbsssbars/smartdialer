@@ -14,8 +14,8 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
 
         const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
 
-        const query = 'SELECT id, username, email, phone FROM users WHERE id = ?';
-        const user = await executeQuery(query, [decodedToken?._id]);
+        const query = 'SELECT id, username, usertype, allowed_procss, dialing_dest, status FROM dialme WHERE username = ?';
+        const user = await executeQuery(query, [decodedToken?.username]);
 
 
         if (!user) {
