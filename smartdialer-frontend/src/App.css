@@ -343,7 +343,7 @@ header {
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* gap: 1rem; */
+    gap: 1rem;
     /* border: 1px solid #373a37; */
     align-items: flex-start;
     
@@ -480,6 +480,7 @@ font-size: 1.2rem;
 /* Writing CSS for Clear CDR component */
 
 .confirmContainer {
+    width:100%;
     gap: .5rem;
     padding: 1rem;
     border-radius: 5px;

@@ -4,7 +4,6 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 
 const Login = ({setToken}) => {
-  const navigate = useNavigate();
   const [formData, setformData] = useState({
     email: "",
     password: "",

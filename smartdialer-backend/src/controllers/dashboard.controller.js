@@ -61,6 +61,52 @@ const getRealTimeAllAgents = asyncHandler(async (req, res) => {
         throw new ApiError(500, error?.message || "Internal Server Error")
     }
 })
+
+/*Query Pending for agent-pause  */
+const agentPause = asyncHandler(async (req, res) => {
+    try {
+        const {id, toChangeStatus}=req.body;
+        const query = 'UPDATE sipusers SET active = ? WHERE id = ?';
+        await executeQuery(query, [toChangeStatus, id]);
+        const queryUpdatedRow = 'SELECT id, username, active, activitytime, status, lastnum, groups FROM sipusers WHERE id = ?';
+        const [results] = await executeQuery(queryUpdatedRow, [id]);
+        return res
+            .status(200)
+            .json(
+                new ApiResponse(
+                    200,
+                    { results },
+                    "Agent Paused successfully"
+                )
+            )
+    } catch (error) {
+        throw new ApiError(500, error?.message || "Internal Server Error")
+    }
+})
+
+/*Query Pending for agent-resume  */
+const agentResume = asyncHandler(async (req, res) => {
+    try {
+        const {id, toChangeStatus}=req.body;
+        console.log('At Backend', id, "and ",toChangeStatus)
+        const query = 'UPDATE sipusers SET active = ? WHERE id = ?';
+        await executeQuery(query, [toChangeStatus, id]);
+        const queryUpdatedRow = 'SELECT id, username, active, activitytime, status, lastnum, groups FROM sipusers WHERE id = ?';
+        const [results] = await executeQuery(queryUpdatedRow, [id]);
+        console.log(results);
+        return res
+            .status(200)
+            .json(
+                new ApiResponse(
+                    200,
+                    { results },
+                    "Agent Paused successfully"
+                )
+            )
+    } catch (error) {
+        throw new ApiError(500, error?.message || "Internal Server Error")
+    }
+})
 /*Query Pending for Show Channels */
 const getChannels = asyncHandler(async (req, res) => {
     try {
@@ -101,6 +147,27 @@ const manageFilters = asyncHandler(async (req, res) => {
     try {
         const query = 'SELECT * FROM filter';
         const [results] = await executeQuery(query);
+        return res
+            .status(200)
+            .json(
+                new ApiResponse(
+                    200,
+                    { results },
+                    "Filter Data Fetched successfully"
+                )
+            )
+    } catch (error) {
+        throw new ApiError(501, error?.message || "Internal Server Error")
+    }
+})
+/* Query Pending for update Duration */
+const updateDuration = asyncHandler(async (req, res) => {
+    try {
+        const {itemToBeUpdated}=req.body;
+        const query = 'UPDATE filter SET duration = ? WHERE id = ?';
+        await executeQuery(query, [itemToBeUpdated.duration, itemToBeUpdated.id]);
+        const queryUpdatedRow = 'SELECT * from filter WHERE id = ?';
+        const [results] = await executeQuery(queryUpdatedRow, [itemToBeUpdated.id]);
         return res
             .status(200)
             .json(
@@ -209,11 +276,14 @@ export {
     getDashboardDetails,
     getRealTimeAgents,
     getRealTimeAllAgents,
+    agentPause,
+    agentResume,
     getChannels,
     getPeers,
     manageFilters,
     clearCDR,
     clearFilter,
+    updateDuration,
     restartDB,
     restartSwitch,
     rebootServer

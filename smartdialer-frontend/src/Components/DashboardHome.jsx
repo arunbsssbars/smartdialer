@@ -7,7 +7,6 @@ import LiveAgentsInfo from "./LiveAgentsInfo";
 const DashboardHome = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState("true");
-  const navigate = useNavigate();
   useEffect(() => {
     fetchData();
   }, []);
