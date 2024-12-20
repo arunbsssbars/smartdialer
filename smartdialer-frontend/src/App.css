@@ -1,15 +1,21 @@
 /* CSS for Login */
+
 .formMainContainer {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 100vh; 
-    /* background-color: var(--bg); */
-    /* background-color: #eacdcff5; */
-    /* background-color: #ffffff; */
-   
 }
 
+.loginContainer{
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #ffffff; */
+    padding: 1rem;
+}
 .loginImage {
     flex: 1 1 auto;
     display: flex;
@@ -17,22 +23,34 @@
     align-items: center;
     height: 100%;
     width: 100%;
+    background-color: var(--loginBg);
+    /* color: #0a0a0a; */
+    position: relative;
+}
+.loginImage::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .2;
+    background-image: url("./assets/login15.jpg");
+    background-size: cover;
+    background-position: center;
     /* background-color: #3c283c; */
 }
 
-.loginImage img {
-    /* flex: 1 1 auto; */
+/* .loginImage img {   
     height: 100%;
     width: 100%;
-    object-fit: cover;
-    box-shadow: #000000 5px 10px 10px 5px;
-}
+    object-fit: cover;   
+} */
 
 .loginContainer {
     flex : 1 1 auto;
-    margin: 5rem;
     height: 80%;
-    width: 30%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,77 +66,96 @@
 }
 
 .loginHeader h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 600;
     background: transparent;
+    color: var(--loginText);
 }
 
 .loginHeader p {
+    font-size: 2.5rem;
+    align-self: center;
+    font-weight: 600;
+    color: var(--loginText);
+    font-style: italic;
+}
+
+.formContainer {
+    width: 100%;   
+    flex: 1 1 auto;
+    padding: 4rem ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formContainer h3 {
+    font-size: 1.7rem;
+    background: transparent;
+    color: var(--loginBg);    
+    display: flex;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3.5rem;
+}
+.formContainer h3 span{
+   padding: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    border-radius: 50%;
+    background-color: var(--loginBg);
+    color:var(--loginText);
+    margin-right: .5rem;
+}
+
+.formContainer p {
     font-size: 1.2rem;
     align-self: center;
     font-weight: 600;
 }
 
-.formContainer {
-    background-color: #fcfcff;
-    width: 100%;   
-    /* border: #d8d5d8 1px solid; */
-    flex: 1 1 auto;
-    padding: 1rem;
-    border-radius: 5px;
-    /* background-color:#ebcfd1b3; */
-    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.75);
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
-    align-items: center;
-    /* color: aliceblue; */
-}
-
-.formContainer h3 {
-    /* color: #d5dae3cf; */
-    /* margin-bottom: 1rem; */
-    font-size: 1.6rem;
-    /* color: rgb(255, 255, 255); */
-    background: transparent;
-
-}
-
 .loginForm {
     width: 100%;
-    /* color: #d5dae3cf;    */
     flex: 1 1 auto;
-    /* color: rgb(255, 255, 255); */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
 .loginForm h2 {
-    /* color: #d5dae3cf; */
-    /* font-size: 1.5rem; */
     font-weight: 600;
     background: transparent;
 }
 
+.iconContainer{
+border-bottom: 1px solid var(--loginBg);
+display: flex;
+justify-content: flex-start;
+align-items: center;
+margin-bottom: 1rem
+}
+.iconContainer svg{ 
+    font-size: 1.3rem;
+    color: var(--loginBg);
+}
 .loginForm input {
     height: 3rem;
-    /* color: #d5dae3cf; */
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 1rem 2rem;
     font-size: 1.2rem;
-    /* border: 3px solid#1d1d1fcf; */
+    border: none;
     background: transparent;
+}
+.loginForm input:focus {
+    outline: none;
 }
 
 .loginForm input::placeholder {
     height: 2.5rem;
-    text-align: left;
-    color: #30333985;
-    margin-top: 0px;
+   border: none;
     font-size: 1.3rem;
-    padding: .5rem;
-    background: transparent;
 }
 
 .loginForm button {
@@ -127,8 +164,12 @@
     margin-top: 1rem;
     border-radius: 5px;
     font-size: 1.5rem;
-    /* background-color: #E8CBCD; */
-    box-shadow: #070607 0px 1px 0px 1px;
+   border: none;
+    background-color: var(--loginBg);
+    color:var(--loginText);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
     cursor: pointer;
     transition: all .2s ease-in-out;
 }
@@ -136,7 +177,7 @@
 .loginForm button:hover {
     transform: scale(1.02);
     /* color: #f0e6e6; */
-    background-color: #e69d91;
+    background-color:var(--loginHover);
     /* box-shadow: #070607 0px 2px 0px 1px; */
 }
 
@@ -294,11 +335,11 @@ header {
 .allControls li a:hover {
     /* box-shadow: #000000 2px 2px 2px 2px; */
     border-radius: 10px;
-    color: rgba(194, 193, 193, 0.863);
+    color: var(--lihover);
     /* background: transparent; */
     /* width: 100%; */
     /* border-bottom: 1px solid #373a37; */
-    background-color: var(--hover);
+    background-color: var(--lihoverBg);
     transform: scale(1.01);
 }
 
@@ -380,18 +421,14 @@ th {
     padding: .7rem;
     font-size: 1.2rem;
     border-bottom: 1px solid rgb(215, 201, 201);
-
 }
 
 td {
     border-spacing: 0;
     padding: .4rem;
-    /* color: #ffffffa2; */
     font-size: 1.5rem;
     text-align: center;
     border-bottom: 1px solid rgba(215, 201, 201, 0.396);
-
-
 }
 
 tr {
@@ -449,15 +486,15 @@ font-size: 1.2rem;
     font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
-    background-color: var(--sidebarBg);
-    color: var(--headerText);
+    background-color: var(--btnBg);
+    color: var(--btnText);
     transition: all .2s ease-in-out;
 
 }
 
 .btn:hover {
-    background-color: var(--headerBg);
-    color: var(--bg);
+    background-color: var(--btnhover) !important;
+    color: var(--bg) !important;
 }
 
 
@@ -524,24 +561,28 @@ font-size: 1.2rem;
 /* Media Query for small screens */
 
 @media only screen and (max-width: 600px) {
-    .dashboardContainer {
+    /* .dashboardContainer {
         padding: 0.5rem;
         margin: 0;
         gap: 1rem;
-    }
+    } */
 
-    .dashboardHeader {
-        margin: 0;
+    header {
         box-shadow: #373a37 0px 0px 5px 0px;
+        padding: .5rem;
     }
-
-    .dashboardHeader h1 {
-        font-size: 2rem;
+    .dashboardHeading{
+        padding: 0rem;
         margin: 0rem;
     }
+    .dashboardHeading h1 {
+        font-size: 1.5rem;
+        margin: 0rem;
+        padding: 0rem;
+    }
 
-    .dashboardHeader p {
-        font-size: 1rem;
+    .dashboardHeading p {
+        font-size: .7rem;
         text-align: center;
         margin: 0rem;
     }
@@ -550,9 +591,9 @@ font-size: 1.2rem;
         flex-direction: column;
     }
 
-    .dashboardController {
+    /* .dashboardController {
         display: none;
-    }
+    } */
 
     .dashboardContent {
         border-radius: 5px;

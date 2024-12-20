@@ -63,10 +63,11 @@ const getRealTimeAllAgents = asyncHandler(async (req, res) => {
 })
 
 /*Query Pending for agent-pause  */
-const agentPause = asyncHandler(async (req, res) => {
+const agentPause = asyncHandler(async (req, res) => {    
+    console.log('JWT Verified for Pausing Agent',req.user);
+    const { id, toChangeStatus } = req.body;
+    const query = 'UPDATE sipusers SET active = ? WHERE id = ?';
     try {
-        const {id, toChangeStatus}=req.body;
-        const query = 'UPDATE sipusers SET active = ? WHERE id = ?';
         await executeQuery(query, [toChangeStatus, id]);
         const queryUpdatedRow = 'SELECT id, username, active, activitytime, status, lastnum, groups FROM sipusers WHERE id = ?';
         const [results] = await executeQuery(queryUpdatedRow, [id]);
@@ -86,14 +87,13 @@ const agentPause = asyncHandler(async (req, res) => {
 
 /*Query Pending for agent-resume  */
 const agentResume = asyncHandler(async (req, res) => {
+    console.log('JWT Verified for Resuming Agent',req.user);
+    const { id, toChangeStatus } = req.body;
+    const query = 'UPDATE sipusers SET active = ? WHERE id = ?';
     try {
-        const {id, toChangeStatus}=req.body;
-        console.log('At Backend', id, "and ",toChangeStatus)
-        const query = 'UPDATE sipusers SET active = ? WHERE id = ?';
         await executeQuery(query, [toChangeStatus, id]);
         const queryUpdatedRow = 'SELECT id, username, active, activitytime, status, lastnum, groups FROM sipusers WHERE id = ?';
         const [results] = await executeQuery(queryUpdatedRow, [id]);
-        console.log(results);
         return res
             .status(200)
             .json(
@@ -162,9 +162,10 @@ const manageFilters = asyncHandler(async (req, res) => {
 })
 /* Query Pending for update Duration */
 const updateDuration = asyncHandler(async (req, res) => {
+    const { itemToBeUpdated } = req.body;
+    console.log('JWT Verified for updating duration', req.user);
+    const query = 'UPDATE filter SET duration = ? WHERE id = ?';
     try {
-        const {itemToBeUpdated}=req.body;
-        const query = 'UPDATE filter SET duration = ? WHERE id = ?';
         await executeQuery(query, [itemToBeUpdated.duration, itemToBeUpdated.id]);
         const queryUpdatedRow = 'SELECT * from filter WHERE id = ?';
         const [results] = await executeQuery(queryUpdatedRow, [itemToBeUpdated.id]);

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { CiGlass } from "react-icons/ci";
 
-const LiveAgentsInfo = () => {
+const AgentLive = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState("true");
   useEffect(() => {
@@ -29,13 +29,20 @@ const LiveAgentsInfo = () => {
   };
 
   const handleAction = async (id, status) => {
+    const token = localStorage.getItem("token");
     console.log("ID is: ", id, " and Status is:", status);
     try {
       //backend response will send an updated row data
       const response =
         status === "active"
-          ? await axios.post("/api/dashboard/agent-pause", { id, toChangeStatus: "inactive" })
-          : await axios.post("/api/dashboard/agent-resume", { id, toChangeStatus: "active" });
+          ? await axios.post("/api/dashboard/agent-pause", { id, toChangeStatus: "inactive" }, {
+            headers: {
+              'Authorization': `Bearer ${token}`
+          }})
+          : await axios.post("/api/dashboard/agent-resume", { id, toChangeStatus: "active" }, {
+            headers: {
+              'Authorization': `Bearer ${token}`
+          }});
       console.log("Action button clicked", response.data.data.results[0]);
       // Update the task status locally
       setData((prevData) =>
@@ -93,7 +100,7 @@ const LiveAgentsInfo = () => {
                     <td>{item.groups}</td>
                     <td>
                       <button
-                        className="btn"
+                        className="btn" style={{background:item.active==='active'? 'crimson' : ''}}
                         onClick={() => {
                           handleAction(item.id, item.active);
                         }}
@@ -112,4 +119,4 @@ const LiveAgentsInfo = () => {
   );
 };
 
-export default LiveAgentsInfo;
+export default AgentLive;

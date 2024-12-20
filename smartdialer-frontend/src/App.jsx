@@ -11,8 +11,9 @@ import Reboot from "./Components/Reboot";
 import Login from "./Components/Login";
 import { Routes, Route, Navigate } from "react-router-dom";
 import DashboardHome from "./Components/DashboardHome";
-import LiveAgentsInfo from "./Components/LiveAgentsInfo";
+import AgentLive from "./Components/AgentLive";
 import { useState } from "react";
+import AllAgentLive from "./Components/AllAgentLive";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -47,7 +48,8 @@ function App() {
               <Route path="/dashboard/restart-db" element={<RestartDB />} />
               <Route path="/dashboard/restart-switch" element={<RestartSwitch />} />
               <Route path="/dashboard/reboot-server" element={<Reboot />} />
-              <Route path="/dashboard/agent-live" element={<LiveAgentsInfo />} />
+              <Route path="/dashboard/agent-live" element={<AgentLive />} />
+              <Route path="/dashboard/all-agent-live" element={< AllAgentLive />} />
               <Route path="*" element={<h1 style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100vh"}}>Error 404: Page Not Found</h1>} />
             </Route>
             <Route path="*" element={<h1 style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100vh"}}>Error 404: Page Not Found</h1>} />

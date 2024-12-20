@@ -1,9 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { MdOutlineEmail } from "react-icons/md";
+import { TbLockPassword } from "react-icons/tb";
+import { MdOutlineAssignmentInd } from "react-icons/md";
 
-const Login = ({setToken}) => {
+
+const Login = ({ setToken }) => {
   const [formData, setformData] = useState({
     email: "",
     password: "",
@@ -12,16 +15,16 @@ const Login = ({setToken}) => {
     e.preventDefault();
     try {
       const response = await axios.post("/api/users/login", formData);
-      setToken(response.data.data.accessToken);      
+      setToken(response.data.data.accessToken);
       // window.location.href='/dashboard'
       setformData({
         email: "",
         password: "",
-      })
+      });
       // navigate('/dashboard');
     } catch (error) {
       console.error("Error logging in:", error);
-      alert('Invalid credentials!');
+      alert("Invalid credentials!");
     }
   };
 
@@ -33,22 +36,27 @@ const Login = ({setToken}) => {
   return (
     <div className="formMainContainer">
       <div className="loginContainer">
-        <div className="loginHeader">
+        {/* <div className="loginHeader">
           <h1>Routing</h1>
           <p>Dialer</p>
-        </div>
+        </div> */}
         <div className="formContainer">
-          <h3>Sign-In</h3>
+          <h3><span><MdOutlineAssignmentInd /></span>Sign-In</h3>
           <form className="loginForm" onSubmit={handleForm}>
-            <h2>Email</h2>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleOnChange}
-              placeholder="Enter Email"
-            />
-            <h2>Password</h2>
+            {/* <h2>Email</h2> */}
+            <div className="iconContainer">
+              <MdOutlineEmail />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleOnChange}
+                placeholder="Enter Email"
+              />
+            </div>
+            {/* <h2>Password</h2> */}
+            <div className="iconContainer">
+            <TbLockPassword />
             <input
               type="password"
               name="password"
@@ -56,12 +64,17 @@ const Login = ({setToken}) => {
               onChange={(e) => handleOnChange(e)}
               placeholder="Enter Password"
             />
+            </div>
             <button type="submit">Login</button>
           </form>
         </div>
       </div>
       <div className="loginImage">
-        <img src=".\src\assets\login16.jpg" />
+      <div className="loginHeader">
+          <h1>Routing</h1>
+          <p>Dialer</p>
+        </div>
+        {/* <img src=".\src\assets\login15.jpg" /> */}
       </div>
     </div>
   );

@@ -6,51 +6,87 @@
   padding: 0;
 }
 
-/* Theme 1: Light Theme */
+/* Theme 1*/
 :root {
-  --bg: #F4F5F8;
+  --bg: #fcf9f9;
   --text: rgb(34, 32, 32);
-  --heading: #19191c;
+  --heading: #19191c;  
+  --btnBg:  #575d6a;
+  --btnText:var(--bg);
+  --btnhover:  #854e69;
   --headingBg: rgb(219, 219, 223);
-  --hover: #23283a;
+  --lihover:rgb(189, 189, 189);
+  --lihoverBg: #23283a;
   --sidebarBg: #1C2437;
   --siddebarText: #9292aa;
   --headerBg: #0e172f;
   --headerText: #bcbccf;
   --tableHover: rgb(236, 236, 243);
+  --loginBg:#544493;
+  --loginText:#e1e1e9;
+  --loginHover:#523da9;
+/*   --loginBg:#1f2d6b;
+  --loginText:#e1e1e9;
+  --loginHover:#523da9; */
+/*   --loginBg:#502d43;
+  --loginText:#c8c8c8;
+  --loginHover:#6a2951; */
 }
 
-/* Theme 2: Dark Theme */
-/* :root.dark-theme {
-  --bg: #121212;
-  --heading: #f5f5f5; 
-  --text: #cccccc;
-  --hover: #1e1e1e;
+/* Theme 2 */
+/* :root {
+  --bg: #F4F5F8;
+  --text: rgb(24, 21, 21);
+  --heading: #161617;  
+  --btnBg:  #535353;
+  --btnText: #e8e8ee;
+  --btnhover:  #854e69;
+  --headingBg: rgb(149, 149, 162);
+  --sidebarBg: #353a49;
+  --siddebarText: #d3d3d4;  
+  --lihover:  #d0cccc;
+  --lihoverBg: #323642;
+  --headerBg: #1d253e;
+  --headerText: #c9c9cf;
+  --tableHover: rgb(236, 236, 243);
 } */
 
-/* Theme 3: Blue Sky Theme */
-/* :root.blue-sky-theme {
-  --bg: #e0f7fa;
-  --heading: #00796b;
-  --text: #004d40;
-  --hover: #b2dfdb;
+/* Theme 3 */
+/* :root {
+  --bg: #e0e1e4;
+  --text: rgb(24, 21, 21);
+  --heading:  #2f2f35;
+  --headingBg:  #a8a8ad;  
+  --btnBg:  #535353;
+  --btnText:  #dddada;
+  --btnhover:  #854e69;
+  --sidebarBg: #4c4c4e;
+  --siddebarText: #c7c7d1;  
+  --lihover:  #d1cdcd;
+  --lihoverBg: #5e5e61;
+  --headerBg: #3c3c3c;
+  --headerText: #c2c2c8;
+  --tableHover: rgb(194, 194, 199);
 } */
 
-/* Theme 4: Earthy Theme */
-/* :root.earthy-theme {
-  --bg: #fef7e7;
-  --heading: #8d6e63;
-  --text: #6d4c41;
-  --hover: #d7ccc8;
-} */
-
-/* Theme 5: High Contrast Theme */
-/* :root.high-contrast-theme {
-  --bg: #000000;
-  --heading: #ffcc00;
-  --text: #ffffff;
-  --hover: #333333;
-} */
+/* Theme 4 */
+/*  :root {
+  --bg: #e0e1e4;
+  --text: rgb(24, 21, 21);
+  --heading:  #3d3d3e;
+  --headingBg:  #d4d4d4;
+  --btnBg:  #7e7e7e;
+  --btnText:  #edebeb;
+  --btnhover:  #854e69;
+  --sidebarBg: #d1d1d4;
+  --siddebarText: #2c2c2f;
+  --lihover:  #232121;
+  --lihoverBg:  #cac8c8;
+  --headerBg: #cacccd;
+  --headerText: #202023;
+  --tableHover: rgb(220, 220, 220);
+}
+ */
 
 /* Usage Example: Apply the theme class to body */
 body {

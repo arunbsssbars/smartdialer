@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
-import LiveAgentsInfo from "./LiveAgentsInfo";
+import LiveAgentsInfo from "./AgentLive";
 
 const DashboardHome = () => {
   const [data, setData] = useState([]);
@@ -62,7 +62,9 @@ const DashboardHome = () => {
           <Link to="/dashboard/agent-live">
             <button className="btn"> Realtime Agent Information</button>
           </Link>
-          <button className="btn"> Live Agent Compact View</button>
+          <Link to="/dashboard/all-agent-live">
+            <button className="btn"> Live Agent Compact View</button>
+          </Link>
         </div>
       </div>
       <div className="contentContainer">

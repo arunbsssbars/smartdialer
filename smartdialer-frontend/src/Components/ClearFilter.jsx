@@ -35,6 +35,7 @@ const clearFilter = () => {
     );
   };
   const handleUpdateDuration = async (id) => {
+    const token=localStorage.getItem('token')
     const itemToBeUpdated = data.find((item) => item.id === id);
     console.log("Updating row:", itemToBeUpdated);
     // Perform update logic (e.g., API call) here
@@ -42,7 +43,10 @@ const clearFilter = () => {
       //backend response will send an updated row data
       const response = await axios.post("/api/dashboard/update-duration", {
         itemToBeUpdated,
-      });
+      },{
+        headers: {
+          'Authorization': `Bearer ${token}`
+      }});
       if(response.status === 200) alert(`Duration ${response.data.data.results[0].duration} ${response.data.data.results[0].duration>1 ? 'Minutes' : 'Minute'} is successfully updated for ${response.data.data.results[0].name}`)
       console.log(
        `Duration ${response.data.data.results[0].duration} ${response.data.data.results[0].duration>1 ? 'Minutes' : 'Minute'} is successfully updated for ${response.data.data.results[0].name}`

@@ -16,7 +16,6 @@ const loginUser = asyncHandler(async (req, res) => {
         throw new ApiError(400, "email or password is required")
     }
 
-
     // checking if it is a valid user 
     const queryUser = 'SELECT id, username, usertype, allowed_procss, dialing_dest, status FROM dialme WHERE username = ?';
     const [[user]] = await executeQuery(queryUser, [email]);
@@ -24,22 +23,16 @@ const loginUser = asyncHandler(async (req, res) => {
     if (!user) {
         throw new ApiError(404, "User does not exist")
     }
-
     //  checking if it is a user with valid password
     const userValidationQuery = 'SELECT * FROM dialme WHERE id = ?';
     const [[validUser]] = await executeQuery(userValidationQuery, [user.id]);
     const isPasswordValid = validUser.passcode === password;
-
     if (!isPasswordValid) {
         throw new ApiError(401, "Invalid user credentials")
     }
-
     // Generate Access tokens
     const accessToken = jwt.sign({ id: validUser.id, username: validUser.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.ACCESS_TOKEN_EXPIRY });
-
     const loggedInUser = user; //from queryUser
-
-
     return res
         .status(200)
         .json(
