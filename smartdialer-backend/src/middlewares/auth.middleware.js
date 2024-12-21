@@ -10,7 +10,8 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
         if (!token) {
             throw new ApiError(401, "Unauthorized request")
         }
-        const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+        const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);        
+        // checkTokenExpiry(token); 
         const query = 'SELECT id, username, usertype, allowed_procss, dialing_dest, status FROM dialme WHERE username = ?';
         const user = await executeQuery(query, [decodedToken?.username]);
 

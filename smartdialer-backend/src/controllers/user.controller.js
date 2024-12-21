@@ -8,18 +8,13 @@ import { executeQuery } from "../db/queryHandler.js";
 // import mongoose from "mongoose";
 
 const loginUser = asyncHandler(async (req, res) => {
-
     const { email, password } = req.body
-    console.log(email, password);
-
     if (!email && !password) {
         throw new ApiError(400, "email or password is required")
     }
-
     // checking if it is a valid user 
     const queryUser = 'SELECT id, username, usertype, allowed_procss, dialing_dest, status FROM dialme WHERE username = ?';
     const [[user]] = await executeQuery(queryUser, [email]);
-
     if (!user) {
         throw new ApiError(404, "User does not exist")
     }
@@ -32,6 +27,11 @@ const loginUser = asyncHandler(async (req, res) => {
     }
     // Generate Access tokens
     const accessToken = jwt.sign({ id: validUser.id, username: validUser.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.ACCESS_TOKEN_EXPIRY });
+    const DecodedUser = jwt.decode(accessToken);
+
+    console.log('The Decoded User contains',DecodedUser);
+    console.log('Token Duration', DecodedUser.exp-DecodedUser.iat);
+    console.log(accessToken);
     const loggedInUser = user; //from queryUser
     return res
         .status(200)
@@ -39,7 +39,7 @@ const loginUser = asyncHandler(async (req, res) => {
             new ApiResponse(
                 200,
                 {
-                    user: loggedInUser, accessToken
+                    user: loggedInUser, accessToken, tokenExpiry: DecodedUser.exp,
                 },
                 "User logged In Successfully"
             )

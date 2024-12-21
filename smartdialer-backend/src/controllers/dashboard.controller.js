@@ -64,7 +64,7 @@ const getRealTimeAllAgents = asyncHandler(async (req, res) => {
 
 /*Query Pending for agent-pause  */
 const agentPause = asyncHandler(async (req, res) => {    
-    console.log('JWT Verified for Pausing Agent',req.user);
+    // console.log('JWT Verified for Pausing Agent',req.user);
     const { id, toChangeStatus } = req.body;
     const query = 'UPDATE sipusers SET active = ? WHERE id = ?';
     try {
@@ -87,7 +87,8 @@ const agentPause = asyncHandler(async (req, res) => {
 
 /*Query Pending for agent-resume  */
 const agentResume = asyncHandler(async (req, res) => {
-    console.log('JWT Verified for Resuming Agent',req.user);
+    // console.log('JWT Verified for Resuming Agent',req.user);  
+  
     const { id, toChangeStatus } = req.body;
     const query = 'UPDATE sipusers SET active = ? WHERE id = ?';
     try {

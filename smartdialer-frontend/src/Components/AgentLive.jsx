@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { CiGlass } from "react-icons/ci";
 
 const AgentLive = () => {
   const [data, setData] = useState([]);
@@ -29,8 +28,7 @@ const AgentLive = () => {
   };
 
   const handleAction = async (id, status) => {
-    const token = localStorage.getItem("token");
-    console.log("ID is: ", id, " and Status is:", status);
+    const token = localStorage.getItem("token");  
     try {
       //backend response will send an updated row data
       const response =
