@@ -4,10 +4,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    height: 100vh; 
+    height: 100vh;
 }
 
-.loginContainer{
+.loginContainer {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
@@ -16,6 +16,7 @@
     /* background-color: #ffffff; */
     padding: 1rem;
 }
+
 .loginImage {
     flex: 1 1 auto;
     display: flex;
@@ -27,6 +28,7 @@
     /* color: #0a0a0a; */
     position: relative;
 }
+
 .loginImage::before {
     content: "";
     position: absolute;
@@ -48,7 +50,7 @@
 } */
 
 .loginContainer {
-    flex : 1 1 auto;
+    flex: 1 1 auto;
     height: 80%;
     width: 50%;
     display: flex;
@@ -81,9 +83,9 @@
 }
 
 .formContainer {
-    width: 100%;   
+    width: 100%;
     flex: 1 1 auto;
-    padding: 4rem ;
+    padding: 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,22 +94,23 @@
 .formContainer h3 {
     font-size: 1.7rem;
     background: transparent;
-    color: var(--loginBg);    
+    color: var(--loginBg);
     display: flex;
     height: 3rem;
     align-items: center;
     justify-content: center;
     margin-bottom: 3.5rem;
 }
-.formContainer h3 span{
-   padding: .5rem;
+
+.formContainer h3 span {
+    padding: .5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.3rem;
     border-radius: 50%;
     background-color: var(--loginBg);
-    color:var(--loginText);
+    color: var(--loginText);
     margin-right: .5rem;
 }
 
@@ -130,17 +133,19 @@
     background: transparent;
 }
 
-.iconContainer{
-border-bottom: 1px solid var(--loginBg);
-display: flex;
-justify-content: flex-start;
-align-items: center;
-margin-bottom: 1rem
+.iconContainer {
+    border-bottom: 1px solid var(--loginBg);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem
 }
-.iconContainer svg{ 
+
+.iconContainer svg {
     font-size: 1.3rem;
     color: var(--loginBg);
 }
+
 .loginForm input {
     height: 3rem;
     padding: 1rem 2rem;
@@ -148,13 +153,14 @@ margin-bottom: 1rem
     border: none;
     background: transparent;
 }
+
 .loginForm input:focus {
     outline: none;
 }
 
 .loginForm input::placeholder {
     height: 2.5rem;
-   border: none;
+    border: none;
     font-size: 1.3rem;
 }
 
@@ -164,9 +170,9 @@ margin-bottom: 1rem
     margin-top: 1rem;
     border-radius: 5px;
     font-size: 1.5rem;
-   border: none;
+    border: none;
     background-color: var(--loginBg);
-    color:var(--loginText);
+    color: var(--loginText);
     font-weight: 600;
     cursor: pointer;
     transition: all .2s ease-in-out;
@@ -177,7 +183,7 @@ margin-bottom: 1rem
 .loginForm button:hover {
     transform: scale(1.02);
     /* color: #f0e6e6; */
-    background-color:var(--loginHover);
+    background-color: var(--loginHover);
     /* box-shadow: #070607 0px 2px 0px 1px; */
 }
 
@@ -257,7 +263,7 @@ header {
 
 .dashboardController {
     flex: 0 0 auto;
-    display: flex;    
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
@@ -268,11 +274,10 @@ header {
 .dashboardController h2 {
     font-size: 2rem;
     font-weight: 600;
-    text-align: left;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: .5rem;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
     background-color: var(--headerBg);
     color: var(--headerText);
     /* border-bottom: 1px solid #373a37; */
@@ -306,22 +311,6 @@ header {
     cursor: pointer;
 }
 
-/* Targetting all the Icons */
-.allControls li:nth-child(n) :first-child {
-    /* border: 1px solid #3c9c3c; */
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* .allControls li:hover {
-    background-color: rgba(145, 129, 129, 0.882);
-} */
-
 .allControls li a {
     color: var(--siddebarText);
     align-items: center;
@@ -329,12 +318,22 @@ header {
     display: flex;
     gap: .5rem;
     text-decoration: none;
-    transition: all .1s ease-in-out;
+    transition: all .2s ease-in-out;
 }
+
+/* Targetting all the Icons */
+/* .allControls li svg{    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;   
+    cursor: pointer;
+} */
+
 
 .allControls li a:hover {
     /* box-shadow: #000000 2px 2px 2px 2px; */
-    border-radius: 10px;
+    border-radius: 5px;
     color: var(--lihover);
     /* background: transparent; */
     /* width: 100%; */
@@ -346,12 +345,14 @@ header {
 .allControls li:last-child {
     background-color: rgba(171, 48, 48, 0.882);
     width: max-content;
-    border-radius: 10px;
+    border-radius: 5px;
+    transition: all .2s ease-in-out;
 }
 
 .allControls li:last-child:hover {
-    background-color: rgba(177, 20, 20, 0.882) !important;
+    background-color: rgba(186, 11, 11, 0.882) !important;
     transform: scale(1.02);
+    background: transparent;
 }
 
 .dashboardContent {
@@ -361,9 +362,9 @@ header {
     flex-direction: column;
     overflow: scroll;
     overflow-x: hidden;
-    padding:1rem
-    /* scrollbar-width: none; */
-  
+    padding: 1rem
+        /* scrollbar-width: none; */
+
 }
 
 /* --------Writting CSS for DashboardHome component-------- */
@@ -376,7 +377,7 @@ header {
     justify-content: center;
     /* border: 1px solid #373a37; */
     align-items: flex-start;
-    
+
 }
 
 .contentContainer {
@@ -387,7 +388,7 @@ header {
     gap: 1rem;
     /* border: 1px solid #373a37; */
     align-items: flex-start;
-    
+
 }
 
 .contentContainer h2 {
@@ -407,7 +408,7 @@ header {
 
 .tableData {
     width: 100%;
-    display: flex;    
+    display: flex;
     overflow: scroll;
     scrollbar-width: none;
 }
@@ -440,33 +441,33 @@ tr:hover {
     background-color: var(--tableHover);
     color: var(--heading);
 }
-  
-  .filters {
+
+.filters {
     padding: .5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2rem;
-  }
-  
-  label {
-    font-weight: bold;    
+}
+
+label {
+    font-weight: bold;
     padding: .5rem;
     font-size: 1.2rem;
-  }
-  
-  select {
+}
+
+select {
     padding: .5rem;
     font-size: 1.2rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
-  
+}
+
 
 #updateDuration {
-height: 2.5rem;
-padding: .2rem;
-font-size: 1.2rem;
+    height: 2.5rem;
+    padding: .2rem;
+    font-size: 1.2rem;
 }
 
 .btnContainer {
@@ -517,7 +518,7 @@ font-size: 1.2rem;
 /* Writing CSS for Clear CDR component */
 
 .confirmContainer {
-    width:100%;
+    width: 100%;
     gap: .5rem;
     padding: 1rem;
     border-radius: 5px;
@@ -537,10 +538,11 @@ font-size: 1.2rem;
     border-bottom: 1px solid #879087;
 }
 
-.confirmContent{
+.confirmContent {
     display: flex;
     flex-direction: column;
 }
+
 .confirmContent h1 {
     font-size: 2.5rem;
     font-weight: 600;
@@ -548,8 +550,9 @@ font-size: 1.2rem;
     border-radius: 4px;
     padding: .5rem;
     background: transparent;
-  
+
 }
+
 .confirmContent p {
     font-size: 1.2rem;
     width: 100%;
@@ -561,44 +564,119 @@ font-size: 1.2rem;
 /* Media Query for small screens */
 
 @media only screen and (max-width: 600px) {
-    /* .dashboardContainer {
-        padding: 0.5rem;
-        margin: 0;
-        gap: 1rem;
-    } */
+    .dashboardContainer {}
 
     header {
-        box-shadow: #373a37 0px 0px 5px 0px;
         padding: .5rem;
+        position: sticky;
+        top: 0;
+        z-index: 101;
     }
-    .dashboardHeading{
-        padding: 0rem;
+
+    .hamburger-icon {
+        margin: .2rem;
+        width: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 1rem;
+        z-index: 102;
+        transition: transform 0.3s ease;
+    }
+
+    .hamburger-icon div {
+        background-color: var(--headerText);
+        height: .25rem;
+        border-radius: .5rem;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger-icon.open div:nth-child(1) {
+        transform: rotate(45deg);
+        transform-origin: 5% 95%;
+    }
+
+    .hamburger-icon.open div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-icon.open div:nth-child(3) {
+        transform: rotate(-45deg);
+        transform-origin: 25% 75%;
+    }
+
+    .dashboardController.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+
+    .dashboardController {
+        padding: 1rem;
         margin: 0rem;
+        width: 70%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        transition: all .5s ease-in-out;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(-100%);
     }
+
+    .dashboardController h2 {
+        font-size: 1.2rem;
+    }
+
+    .dashboardControls {
+        padding: 0rem;
+        height: 93vh;
+        width: 100%;
+        position: relative;
+    }
+
+    .allControls li {
+        gap: 0rem;
+    }
+
+    .allControls li {
+        font-size: 1rem;
+    }
+
+    .allControls li a {
+        gap: .5rem;
+    }
+
+    .dashboardHeading {}
+
     .dashboardHeading h1 {
-        font-size: 1.5rem;
-        margin: 0rem;
-        padding: 0rem;
+        font-size: 1.2rem;
     }
 
     .dashboardHeading p {
-        font-size: .7rem;
+        font-size: .5rem;
         text-align: center;
-        margin: 0rem;
     }
 
     .dashboardBody {
         flex-direction: column;
+        position: relative;
     }
 
-    /* .dashboardController {
-        display: none;
-    } */
+    .logoutBtn {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .logoutBtn svg {
+        width: 1rem;
+        height: 1rem;
+    }
 
     .dashboardContent {
-        border-radius: 5px;
         padding: 0rem;
-        gap: 1rem;
     }
 
     .routeHeader {
@@ -614,17 +692,4 @@ font-size: 1.2rem;
         font-size: 1rem;
     }
 
-    .logoutBtn {
-        width: 5rem;
-        height: 5rem;
-        display: none;
-        width: 0;
-    }
-
-    .logoutBtn svg {
-        width: 2rem;
-        height: 2rem;
-        line-height: 2rem;
-        font-size: 1rem;
-    }
 }

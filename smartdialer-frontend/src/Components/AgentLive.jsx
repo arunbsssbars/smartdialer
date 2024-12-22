@@ -98,7 +98,7 @@ const AgentLive = () => {
                     <td>{item.groups}</td>
                     <td>
                       <button
-                        className="btn" style={{background:item.active==='active'? 'crimson' : ''}}
+                        className="btn" style={{background:item.active==='active'? 'crimson' : '', display:'flex',justifyContent:'center', width:'90%', padding: '.8rem'}}
                         onClick={() => {
                           handleAction(item.id, item.active);
                         }}
