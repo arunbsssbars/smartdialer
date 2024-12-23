@@ -7,19 +7,11 @@
     height: 100vh;
 }
 
-.loginContainer {
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* background-color: #ffffff; */
-    padding: 1rem;
-}
 
 .loginImage {
     flex: 1 1 auto;
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     height: 100%;
@@ -48,6 +40,7 @@
     width: 100%;
     object-fit: cover;   
 } */
+
 
 .loginContainer {
     flex: 1 1 auto;
@@ -114,11 +107,6 @@
     margin-right: .5rem;
 }
 
-.formContainer p {
-    font-size: 1.2rem;
-    align-self: center;
-    font-weight: 600;
-}
 
 .loginForm {
     width: 100%;
@@ -177,7 +165,6 @@
     cursor: pointer;
     transition: all .2s ease-in-out;
     cursor: pointer;
-    transition: all .2s ease-in-out;
 }
 
 .loginForm button:hover {
@@ -402,7 +389,7 @@ header {
 
 .contentContainer p {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 400;
     padding: .5rem;
 }
 
@@ -445,7 +432,7 @@ tr:hover {
 .filters {
     padding: .5rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 2rem;
 }
@@ -459,10 +446,9 @@ label {
 select {
     padding: .5rem;
     font-size: 1.2rem;
-    border: 1px solid #ccc;
+    border: 1px solid #a89e9e;
     border-radius: 5px;
 }
-
 
 #updateDuration {
     height: 2.5rem;
@@ -490,7 +476,6 @@ select {
     background-color: var(--btnBg);
     color: var(--btnText);
     transition: all .2s ease-in-out;
-
 }
 
 .btn:hover {
@@ -501,7 +486,6 @@ select {
 
 
 .hardwareInfo {
-    width: 100%;
     flex: 1 1 auto;
     /* border: 1px solid #b6c3b6; */
     width: 100%;
@@ -563,8 +547,83 @@ select {
 
 /* Media Query for small screens */
 
-@media only screen and (max-width: 600px) {
-    .dashboardContainer {}
+
+@media only screen and (min-width: 390px) and (max-width: 750px) {
+    .formMainContainer {
+        position: relative;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    .loginImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* height: 150vh; */
+        height: max-content;
+    }
+
+    .loginContainer {
+        z-index: 1;
+        justify-content: flex-start;
+        width: 100%;
+        height: 100%;
+    }
+
+    .loginHeader {
+        justify-content: flex-start;
+        margin: 1rem;
+    }
+
+    .loginHeader h1 {
+        font-size: 3rem;
+        color: var(--loginText);
+    }
+
+    .loginHeader p {
+        font-size: 1.5rem;
+        color: var(--loginText);
+    }
+
+    .formContainer {
+        width: 100%;
+        padding: 2rem;
+        margin-top: 10rem;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .formContainer h3 {
+        font-size: 1.3rem;
+        color: var(--loginBg);
+        height: 2rem;
+        margin-bottom: 0rem;
+    }
+
+    .formContainer h3 span {
+        padding: .5rem;
+    }
+
+    .loginForm {
+        justify-content: flex-start;
+        margin: 3rem;
+        gap: 1rem;
+    }
+
+    .loginForm input {
+        padding: 1rem 1rem;
+    }
+
+    .iconContainer {
+        border-bottom: 1px solid var(--loginText);
+    }
+
+    .iconContainer svg {
+    }
+
+    .dashboardContainer {
+        margin: 0rem;
+    }
 
     header {
         padding: .5rem;
@@ -572,6 +631,18 @@ select {
         top: 0;
         z-index: 101;
     }
+
+    .dashboardHeading {}
+
+    .dashboardHeading h1 {
+        font-size: 1.2rem;
+    }
+
+    .dashboardHeading p {
+        font-size: .5rem;
+        text-align: center;
+    }
+
 
     .hamburger-icon {
         margin: .2rem;
@@ -582,14 +653,14 @@ select {
         justify-content: space-between;
         height: 1rem;
         z-index: 102;
-        transition: transform 0.3s ease;
+        transition: transform 0.2s ease;
     }
 
     .hamburger-icon div {
         background-color: var(--headerText);
         height: .25rem;
         border-radius: .5rem;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
     }
 
     .hamburger-icon.open div:nth-child(1) {
@@ -606,6 +677,21 @@ select {
         transform-origin: 25% 75%;
     }
 
+    .logoutBtn {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .logoutBtn svg {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .dashboardBody {
+        flex-direction: column;
+        position: relative;
+    }
+
     .dashboardController.open {
         opacity: 1;
         visibility: visible;
@@ -620,7 +706,7 @@ select {
         top: 0;
         left: 0;
         z-index: 100;
-        transition: all .5s ease-in-out;
+        transition: all .2s ease-in-out;
         opacity: 0;
         visibility: hidden;
         transform: translateX(-100%);
@@ -649,47 +735,97 @@ select {
         gap: .5rem;
     }
 
-    .dashboardHeading {}
-
-    .dashboardHeading h1 {
-        font-size: 1.2rem;
-    }
-
-    .dashboardHeading p {
-        font-size: .5rem;
-        text-align: center;
-    }
-
-    .dashboardBody {
-        flex-direction: column;
-        position: relative;
-    }
-
-    .logoutBtn {
-        width: 1.5rem;
-        height: 1.5rem;
-    }
-
-    .logoutBtn svg {
-        width: 1rem;
-        height: 1rem;
-    }
-
     .dashboardContent {
         padding: 0rem;
+        margin: 0.2rem;
     }
 
-    .routeHeader {
-        padding: .5rem;
-        border-radius: 5px;
+    .mainContainer {
+        flex-direction: column;
+        gap: .2rem;
     }
 
-    .routeHeader h3 {
-        font-size: 1.5rem;
+    .contentContainer {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
-    .routeHeader p {
+    .contentContainer h2 {
+        font-size: 1.3rem;
+        margin: 0rem;
+    }
+
+    .contentContainer h1 {
+        font-size: 1.2rem;
+        margin: 0rem;
+    }
+
+    .contentContainer p {
+        font-size: .8rem;
+        margin: 0rem;
+    }
+
+    th {
+        font-size: .8rem;
+        padding: .3rem;
+    }
+
+    td {
+        font-size: 1rem;
+        padding: .1rem;
+    }
+
+    .filters {
+        gap: 0rem;
+        margin: 0rem;
+        width: 100%;
+        padding: 0.1rem;
+        height: 100%;
+        /* flex-wrap: wrap; */
+        overflow: scroll;
+    }
+
+    label {
+        font-size: .8rem;
+        padding: .2rem;
+        margin: 0 0.3rem;
+    }
+
+    select {
+        font-size: .8rem;
+        padding: .1rem;
+        height: 70%;
+        margin: 0 .3rem;
+    }
+
+    #updateDuration {
+        height: 2rem;
+        width: 70%;
+        padding: .2rem;
         font-size: 1rem;
     }
 
+    .btnContainer {
+        margin: 0rem;
+        gap: .1rem;
+    }
+
+    .btn {
+        font-size: .6rem;
+        padding: .6rem;
+        margin: .1rem;
+    }
+
+
+    .confirmContainer h2 {
+        font-size: 1.6rem;
+    }
+
+    .confirmContent h1 {
+        font-size: 1.4rem;
+    }
+
+    .confirmContent p {
+        font-size: .9rem;
+    }
 }

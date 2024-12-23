@@ -47,10 +47,6 @@ const Login = ({ setToken }) => {
   return (
     <div className="formMainContainer">
       <div className="loginContainer">
-        {/* <div className="loginHeader">
-          <h1>Routing</h1>
-          <p>Dialer</p>
-        </div> */}
         <div className="formContainer">
           <h3>
             <span>
