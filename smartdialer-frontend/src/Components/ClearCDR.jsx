@@ -1,6 +1,4 @@
 import React from "react";
-import Confirm from "./Other Components/Confirm";
-
 const ClearCDR = () => {
   return (
     <>

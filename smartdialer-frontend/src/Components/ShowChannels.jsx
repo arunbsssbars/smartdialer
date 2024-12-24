@@ -1,8 +1,27 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const ShowChannels = () => {
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState("true");
+  useEffect(() => {
+    getChannelsInfo();
+  }, []);
+
+  const getChannelsInfo = () => {
+    axios
+      .get("/api/dashboard/show-channels")
+      .then(function (response) {
+        setData(response.data.data.stdout);
+        console.log(response.data.data.stdout);
+        setLoading(false);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+  };
   return (
     <div className="mainContainer">
       <div className="contentContainer">
@@ -17,7 +36,8 @@ const ShowChannels = () => {
           </h1>
         ) : (
           <div className="tableData">
-            <table>
+            {data}
+            {/*             <table>
               <thead>
                 <tr>
                   <th>ID</th>
@@ -50,7 +70,7 @@ const ShowChannels = () => {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table> */}
           </div>
         )}
       </div>

@@ -107,7 +107,6 @@
     margin-right: .5rem;
 }
 
-
 .loginForm {
     width: 100%;
     flex: 1 1 auto;
@@ -189,7 +188,7 @@ header {
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 2rem;
+    padding: 1rem;
     background-color: var(--headerBg);
 }
 
@@ -222,8 +221,8 @@ header {
     justify-content: center;
     align-items: center;
     border-radius: 15%;
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     margin: 1rem;
     transition: transform .1s ease-in-out;
     background: transparent;
@@ -548,7 +547,7 @@ select {
 /* Media Query for small screens */
 
 
-@media only screen and (min-width: 390px) and (max-width: 750px) {
+@media only screen and (max-width: 750px) {
     .formMainContainer {
         position: relative;
         flex-direction: column;

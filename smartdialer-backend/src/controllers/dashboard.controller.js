@@ -3,6 +3,8 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { executeQuery } from "../db/queryHandler.js";
+import { exec } from 'child_process';
+
 
 /* Pending Query for Call Distribution */
 const getDashboardDetails = asyncHandler(async (req, res) => {
@@ -63,7 +65,7 @@ const getRealTimeAllAgents = asyncHandler(async (req, res) => {
 })
 
 /*Query Pending for agent-pause  */
-const agentPause = asyncHandler(async (req, res) => {    
+const agentPause = asyncHandler(async (req, res) => {
     // console.log('JWT Verified for Pausing Agent',req.user);
     const { id, toChangeStatus } = req.body;
     const query = 'UPDATE sipusers SET active = ? WHERE id = ?';
@@ -88,7 +90,7 @@ const agentPause = asyncHandler(async (req, res) => {
 /*Query Pending for agent-resume  */
 const agentResume = asyncHandler(async (req, res) => {
     // console.log('JWT Verified for Resuming Agent',req.user);  
-  
+
     const { id, toChangeStatus } = req.body;
     const query = 'UPDATE sipusers SET active = ? WHERE id = ?';
     try {
@@ -108,41 +110,55 @@ const agentResume = asyncHandler(async (req, res) => {
         throw new ApiError(500, error?.message || "Internal Server Error")
     }
 })
-/*Query Pending for Show Channels */
-const getChannels = asyncHandler(async (req, res) => {
-    try {
-        const query = 'SELECT id, username, active, activitytime, status, lastnum, groups FROM sipusers';
-        const [results] = await executeQuery(query);
-        return res
-            .status(200)
-            .json(
-                new ApiResponse(
-                    200,
-                    { results },
-                    "Channels details Fetched successfully"
+
+const getChannels = asyncHandler(async(req, res) => {    
+        exec('sh ./src/shellscripts/show-channels.sh', (error, stdout, stderr) => {
+            if (error) {
+                console.error(`Error executing script: ${error.message}`);
+                return res.status(500).json({ error: 'Script execution failed', details: error.message });
+            }
+
+            if (stderr) {
+                console.warn(`Script stderr: ${stderr}`);
+            }
+
+            console.log(`Script stdout: ${stdout}`);
+            // res.status(200).json({ message: 'Script executed successfully', output: stdout });
+            return res
+                .status(200)
+                .json(
+                    new ApiResponse(
+                        200,
+                        {stdout },
+                        "Channels details Fetched successfully"
+                    )
                 )
-            )
-    } catch (error) {
-        throw new ApiError(500, error?.message || "Internal Server Error")
-    }
+        });
 })
-/* Query Pending for Show Peers */
-const getPeers = asyncHandler(async (req, res) => {
-    try {
-        const query = 'SELECT * FROM sipusers';
-        const [results] = await executeQuery(query);
+
+const getPeers = asyncHandler(async(req, res) => {    
+    exec('sh ./src/shellscripts/show-peers.sh', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error executing script: ${error.message}`);
+            return res.status(500).json({ error: 'Script execution failed', details: error.message });
+        }
+
+        if (stderr) {
+            console.warn(`Script stderr: ${stderr}`);
+        }
+
+        console.log(`Script stdout: ${stdout}`);
+        // res.status(200).json({ message: 'Script executed successfully', output: stdout });
         return res
             .status(200)
             .json(
                 new ApiResponse(
                     200,
-                    { results },
+                    {stdout },
                     "Peers Details Fetched successfully"
                 )
             )
-    } catch (error) {
-        throw new ApiError(501, error?.message || "Internal Server Error")
-    }
+    });
 })
 const manageFilters = asyncHandler(async (req, res) => {
     try {
@@ -219,59 +235,82 @@ const clearFilter = asyncHandler(async (req, res) => {
         throw new ApiError(501, error?.message || "Internal Server Error")
     }
 })
-/* Query Pending for restartDB */
-const restartDB = asyncHandler(async (req, res) => {
-    try {
-        const query = 'SELECT * FROM sipusers';
-        const [results] = await executeQuery(query);
+
+const restartDB = asyncHandler(async(req, res) => {    
+    exec('sh ./src/shellscripts/restart-db.sh', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error executing script: ${error.message}`);
+            return res.status(500).json({ error: 'Script execution failed', details: error.message });
+        }
+
+        if (stderr) {
+            console.warn(`Script stderr: ${stderr}`);
+        }
+
+        console.log(`Script stdout: ${stdout}`);
+        // res.status(200).json({ message: 'Script executed successfully', output: stdout });
         return res
             .status(200)
             .json(
                 new ApiResponse(
                     200,
-                    { results },
+                    {stdout },
                     "DB Restarted successfully"
                 )
             )
-    } catch (error) {
-        throw new ApiError(501, error?.message || "Internal Server Error")
-    }
+    });
 })
-/* Query Pending for restartSwitch */
-const restartSwitch = asyncHandler(async (req, res) => {
-    try {
-        const query = 'SELECT * FROM sipusers';
-        const [results] = await executeQuery(query);
+
+
+const restartSwitch = asyncHandler(async(req, res) => {    
+    exec('sh ./src/shellscripts/restart-db.sh', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error executing script: ${error.message}`);
+            return res.status(500).json({ error: 'Script execution failed', details: error.message });
+        }
+
+        if (stderr) {
+            console.warn(`Script stderr: ${stderr}`);
+        }
+
+        console.log(`Script stdout: ${stdout}`);
+        // res.status(200).json({ message: 'Script executed successfully', output: stdout });
         return res
             .status(200)
             .json(
                 new ApiResponse(
                     200,
-                    { results },
+                    {stdout },
                     "Switch Restarted successfully"
                 )
             )
-    } catch (error) {
-        throw new ApiError(501, error?.message || "Internal Server Error")
-    }
+    });
 })
+
 /* Query Pending for rebootServer */
-const rebootServer = asyncHandler(async (req, res) => {
-    try {
-        const query = 'SELECT * FROM sipusers';
-        const [results] = await executeQuery(query);
+const rebootServer = asyncHandler(async(req, res) => {    
+    exec('sh ./src/shellscripts/restart-db.sh', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error executing script: ${error.message}`);
+            return res.status(500).json({ error: 'Script execution failed', details: error.message });
+        }
+
+        if (stderr) {
+            console.warn(`Script stderr: ${stderr}`);
+        }
+
+        console.log(`Script stdout: ${stdout}`);
+        // res.status(200).json({ message: 'Script executed successfully', output: stdout });
         return res
             .status(200)
             .json(
                 new ApiResponse(
                     200,
-                    { results },
+                    {stdout },
                     "Server Rebooted successfully"
                 )
             )
-    } catch (error) {
-        throw new ApiError(501, error?.message || "Internal Server Error")
-    }
+    });
 })
 
 export {
