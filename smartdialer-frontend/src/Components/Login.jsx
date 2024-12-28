@@ -5,19 +5,19 @@ import { MdOutlineEmail } from "react-icons/md";
 import { TbLockPassword } from "react-icons/tb";
 import { MdOutlineAssignmentInd } from "react-icons/md";
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, setTokenExpiry }) => {
   const [formData, setformData] = useState({
     email: "",
     password: "",
   });
-
-  const [expiryTime, setExpiryTime] = useState(null);
   const handleForm = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post("/api/users/login", formData);
       setToken(response.data.data.accessToken);
-      handleSession(response.data.data.tokenExpiry);
+      localStorage.setItem("token", response.data.data.accessToken);
+      setTokenExpiry(response.data.data.tokenExpiry);
+      localStorage.setItem("tokenExpiry", response.data.data.tokenExpiry);
       setformData({
         email: "",
         password: "",
@@ -31,17 +31,6 @@ const Login = ({ setToken }) => {
   const handleOnChange = (e) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
     console.log(formData);
-  };
-
-  const handleSession = (tokenExpiry) => {
-    setTimeout(() => {
-      alert("Your session will expire in 10 minutes.");
-    }, tokenExpiry * 1000 - Date.now() - 10 * 60 * 1000);
-    setTimeout(() => {
-      alert("Your session has expired. Please login again");
-      setToken(null);
-      localStorage.removeItem("token");
-    }, tokenExpiry * 1000 - Date.now());
   };
   
   return (

@@ -4,12 +4,13 @@ import axios from "axios";
 
 const AgentLive = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState("true");
+  const [loading, setLoading] = useState("false");
   useEffect(() => {
     getLiveAgentsInfo();
   }, []);
 
   const getLiveAgentsInfo = () => {
+    setLoading(true);
     axios
       .get("/api/dashboard/agent-live")
       .then(function (response) {
@@ -24,6 +25,7 @@ const AgentLive = () => {
       })
       .finally(function () {
         // always executed
+        setLoading(false);
       });
   };
 
@@ -33,11 +35,11 @@ const AgentLive = () => {
       //backend response will send an updated row data
       const response =
         status === "active"
-          ? await axios.post("/api/dashboard/agent-pause", { id, toChangeStatus: "inactive" }, {
+          ? await axios.post("/api/dashboard/agent-pause", { id, toChangeStatus: "inactive", currentStatus:'paused' }, {
             headers: {
               'Authorization': `Bearer ${token}`
           }})
-          : await axios.post("/api/dashboard/agent-resume", { id, toChangeStatus: "active" }, {
+          : await axios.post("/api/dashboard/agent-resume", { id, toChangeStatus: "active", currentStatus:'free' }, {
             headers: {
               'Authorization': `Bearer ${token}`
           }});
@@ -58,6 +60,8 @@ const AgentLive = () => {
       );
     }
   };
+
+  
   return (
     <div className="mainContainer">
       <div className="contentContainer">

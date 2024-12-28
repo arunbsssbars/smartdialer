@@ -92,10 +92,10 @@ const DashboardHome = () => {
           </table>
         </div>
         <div className="btnContainer">
-          <Link>
+          <Link to='/dashboard'>
             <button className="btn"> Map Call Controls</button>
           </Link>
-          <Link>
+          <Link to='/dashboard/count-channels'>
             <button className="btn"> Calls from Provider</button>
           </Link>
         </div>

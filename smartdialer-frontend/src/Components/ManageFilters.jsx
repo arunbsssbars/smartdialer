@@ -3,33 +3,33 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 const ManageFilters = () => {
-  const [initialData, setInitialData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-  const [loading, setLoading] = useState("true");
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState("false");
   const [filters, setFilters] = useState({
     group: "",
     filterType: "",
     duration: "",
   });
-  
+
+  const token = localStorage.getItem("token");
   useEffect(() => {
-    getManageFilter();   
+    getManageFilter();
   }, []);
 
   const getManageFilter = () => {
+    setLoading(true);
     axios
       .get("/api/dashboard/manage-filters")
       .then(function (response) {
-        setInitialData(response.data.data.results);
-        setFilteredData(response.data.data.results);
+        setData(response.data.data.results);
         console.log(response.data.data.results);
-        setLoading(false);
       })
       .catch(function (error) {
         // handle error
         console.log(error);
       })
       .finally(function () {
+        setLoading(false);
         // always executed
       });
   };
@@ -45,18 +45,41 @@ const ManageFilters = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Apply filters
-    const filtered = initialData.filter((item) => {
-      const matchesGroup = !filters.group || item.name === filters.group;
-      const matchesFilterType =
-        !filters.filterType || item.type === filters.filterType;
-      const matchesDuration =
-        !filters.duration || item.duration === filters.duration;
-
-      return matchesGroup && matchesFilterType && matchesDuration;     
-    });
-    console.log(filtered);
-    setFilteredData(filtered);
+    setLoading(true);
+    axios
+      .post(
+        "/api/dashboard/manage-filters-submit",
+        { filters },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(function (response) {
+        console.log(response.data.data.results[0]);
+        // setData locally to render the changes
+        setData((prevData) =>
+          prevData.map((item) =>
+            item.name === filters.group
+              ? { ...item, ...response.data.data.results[0] }
+              : item
+          )
+        );
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+        setLoading(false);
+        setFilters({
+          group: "",
+          filterType: "",
+          duration: "",
+        });
+      });
   };
 
   return (
@@ -75,7 +98,7 @@ const ManageFilters = () => {
             name="group"
             value={filters.group}
             onChange={(e) => handleChange(e)}
-          >
+          required>
             <option value="">Choose...</option>
             <option value="Group1">Group1</option>
             <option value="Group2">Group2</option>
@@ -94,6 +117,7 @@ const ManageFilters = () => {
             name="filterType"
             value={filters.filterType}
             onChange={(e) => handleChange(e)}
+            required
           >
             <option value="">Choose...</option>
             <option value="CalleeID">CalleeID</option>
@@ -109,6 +133,7 @@ const ManageFilters = () => {
             name="duration"
             value={filters.duration}
             onChange={(e) => handleChange(e)}
+            required
           >
             <option value="">Choose...</option>
             <option value="1">1 min</option>
@@ -146,7 +171,7 @@ const ManageFilters = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredData.map((item, index) => (
+                {data.map((item, index) => (
                   <tr key={index}>
                     <td>{item.id}</td>
                     <td>{item.name}</td>

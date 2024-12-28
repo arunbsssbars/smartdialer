@@ -4,12 +4,13 @@ import axios from "axios";
 
 const ShowChannels = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState("true");
+  const [loading, setLoading] = useState("false");
   useEffect(() => {
     getChannelsInfo();
   }, []);
 
   const getChannelsInfo = () => {
+    setLoading(true);
     axios
       .get("/api/dashboard/show-channels")
       .then(function (response) {
@@ -20,6 +21,7 @@ const ShowChannels = () => {
       .catch(function (error) {
         // handle error
         console.log(error);
+        setLoading(false);
       });
   };
   return (

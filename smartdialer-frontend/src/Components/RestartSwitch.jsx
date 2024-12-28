@@ -1,6 +1,30 @@
 import React from "react";
+import { useNavigate } from "react-router";
+import axios from "axios";
 
 const RestartSwitch = () => {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const handleRestartSwitch = () => {
+    axios
+      .post("/api/dashboard/restart-switch", null, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+      }})
+      .then(function (response) {
+        console.log(response.data.data);
+        if (response.status === 200) alert(`Switch is Restarted successfully`);
+        navigate("/dashboard");
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+  };
+  const handleCancel = () => {
+    // handle cancel
+    navigate("/dashboard");
+  };
   return (
     <>
       <div className=" confirmContainer">
@@ -13,10 +37,10 @@ const RestartSwitch = () => {
           </p>
         </div>
         <div className="btnContainer">
-          <button className="btn" style={{ backgroundColor: "crimson" }}>
+          <button className="btn" style={{ backgroundColor: "crimson" }} onClick={handleRestartSwitch}>
             Restart
           </button>
-          <button className="btn">Cancel</button>
+          <button className="btn" onClick={handleCancel}>Cancel</button>
         </div>
       </div>
     </>

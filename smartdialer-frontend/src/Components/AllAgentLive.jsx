@@ -1,38 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const AllAgentLive = () => {
-  const agents = [
-    { id: 11001, value: 0 },
-    { id: 11002, value: 0 },
-    { id: 11003, value: 0 },
-    { id: 11004, value: 0 },
-    { id: 11005, value: 0 },
-    { id: 11006, value: 0 },
-    { id: 11007, value: 0 },
-    { id: 11008, value: 0 },
-    { id: 11009, value: 0 },
-    { id: 11010, value: 0 },
-    { id: 11011, value: 0 },
-    { id: 11012, value: 0 },
-    { id: 11013, value: 0 },
-    { id: 11014, value: 0 },
-    { id: 11015, value: 0 },
-    { id: 11016, value: 0 },
-    { id: 11017, value: 0 },
-    { id: 11018, value: 0 },
-    { id: 11019, value: 0 },
-    { id: 11020, value: 0 },
-    { id: 11021, value: 0 },
-    { id: 11022, value: 0 },
-    { id: 11023, value: 0 },
-    { id: 11024, value: 0 },
-  ];
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState("false");
+  useEffect(() => {
+    getAllLiveAgentsInfo();
+  }, []);
 
-  // Split agents into rows of 10
-  const rows = [];
-  for (let i = 0; i < agents.length; i += 10) {
-    rows.push(agents.slice(i, i + 10));
-  }
+  const getAllLiveAgentsInfo = () => {
+    setLoading(true);
+    axios
+      .get("/api/dashboard/all-agent-live")
+      .then(function (response) {
+        setData(response.data.data.responseData);
+        console.log(response.data.data.responseData);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+        setLoading(false);
+      });
+  };
+
+  const renderRows = () => {
+    const rows = [];
+    // Split agents into rows of 10
+    for (let i = 0; i < data.length; i += 10) {
+      const row = data
+        .slice(i, i + 10)
+        .map((item, index) => <td key={index}>{item}</td>);
+      rows.push(<tr key={i}>{row}</tr>);
+    }
+    return rows;
+  };
 
   return (
     <div className="mainContainer">
@@ -41,29 +45,14 @@ const AllAgentLive = () => {
         <div className="tableData">
           <table>
             <thead>
+              {/* Render column headers */}
               <tr>
-                {/* Render column headers */}
-                {Array.from({ length: 10 }, (_, index) => (
-                  <th key={index}>{index + 1}</th>
+                {[...Array(10)].map((_, i) => (
+                  <th key={i}>{i + 1}</th>
                 ))}
               </tr>
             </thead>
-            <tbody>
-              {rows.map((row, rowIndex) => (
-                <tr key={rowIndex}>
-                  {row.map((agent) => (
-                    <td key={agent.id}>
-                      {agent.id} : {agent.value}
-                    </td>
-                  ))}
-                  {/* Fill empty cells if the row is incomplete */}
-                  {row.length < 10 &&
-                    Array.from({ length: 10 - row.length }, (_, index) => (
-                      <td key={`empty-${rowIndex}-${index}`}></td>
-                    ))}
-                </tr>
-              ))}
-            </tbody>
+            <tbody>{renderRows()}</tbody>
           </table>
         </div>
       </div>

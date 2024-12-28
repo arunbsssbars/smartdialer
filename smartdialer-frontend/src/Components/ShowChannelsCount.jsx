@@ -2,20 +2,20 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const ShowPeers = () => {
+const ShowChannelsCount = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState("false");
   useEffect(() => {
-    getPeersInfo();
+    getChannelsCount();
   }, []);
 
-  const getPeersInfo = () => {
+  const getChannelsCount = () => {
     setLoading(true);
     axios
-      .get("/api/dashboard/show-peers")
+      .get("/api/dashboard/count-channels")
       .then(function (response) {
-        setData(response.data.data.stdout);
-        console.log(response.data.data.stdout);
+        setData(response.data.data);
+        console.log(response.data.data);
         setLoading(false);
       })
       .catch(function (error) {
@@ -27,18 +27,18 @@ const ShowPeers = () => {
   return (
     <div className="mainContainer">
       <div className="contentContainer">
-        <h2>Show Call Peers</h2>
+        <h2>Show Channels</h2>
         <p>Realtime Call Connectivity and User Status Display</p>
       </div>
       <div className="contentContainer">
-        <h2>Peer Information</h2>
+        <h2>Channel Information</h2>
         {loading ? (
           <h1 style={{ margin: " 10rem", background: "transparent" }}>
             Loading...
           </h1>
         ) : (
           <div className="tableData">
-            {data}
+            {data.stdout}
             {/*             <table>
               <thead>
                 <tr>
@@ -80,4 +80,4 @@ const ShowPeers = () => {
   );
 };
 
-export default ShowPeers;
+export default ShowChannelsCount;

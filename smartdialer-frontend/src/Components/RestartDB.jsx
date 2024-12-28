@@ -1,6 +1,30 @@
 import React from "react";
+import { useNavigate } from "react-router";
+import axios from "axios";
 
 const RestartDB = () => {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const handleRestartDB = () => {
+    axios
+      .post("/api/dashboard/restart-db", null,{
+        headers: {
+          'Authorization': `Bearer ${token}`
+      }})
+      .then(function (response) {
+        console.log(response.data.data);
+        if (response.status === 200) alert(`DB is Restarted successfully`);
+        navigate("/dashboard");
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+  };
+  const handleCancel = () => {
+    // handle cancel
+    navigate("/dashboard");
+  };
   return (
     <>
       <div className=" confirmContainer">
@@ -13,10 +37,10 @@ const RestartDB = () => {
           </p>
         </div>
         <div className="btnContainer">
-          <button className="btn" style={{ backgroundColor: "crimson" }}>
+          <button className="btn" style={{ backgroundColor: "crimson" }} onClick={handleRestartDB}>
             Restart
           </button>
-          <button className="btn">Cancel</button>
+          <button className="btn" onClick={handleCancel}>Cancel</button>
         </div>
       </div>
     </>

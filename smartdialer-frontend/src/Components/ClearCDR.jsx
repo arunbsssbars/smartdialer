@@ -1,5 +1,29 @@
 import React from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const ClearCDR = () => {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const handleClearCDR = () => {
+    axios
+      .post("/api/dashboard/clear-cdr", null,{
+        headers: {
+          'Authorization': `Bearer ${token}`
+      }})
+      .then(function (response) {
+        console.log(response.data.data);
+        if (response.status === 200) alert(`CDR is successfully cleared`);
+        navigate("/dashboard");
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+  };
+  const handleCancel = () => {
+    // handle cancel
+    navigate("/dashboard");
+  };
   return (
     <>
       <div className=" confirmContainer">
@@ -12,10 +36,16 @@ const ClearCDR = () => {
           </p>
         </div>
         <div className="btnContainer">
-          <button className="btn" style={{ backgroundColor: "crimson" }}>
+          <button
+            className="btn"
+            style={{ backgroundColor: "crimson" }}
+            onClick={handleClearCDR}
+          >
             Truncate
           </button>
-          <button className="btn">Cancel</button>
+          <button className="btn" onClick={handleCancel}>
+            Cancel
+          </button>
         </div>
       </div>
     </>
