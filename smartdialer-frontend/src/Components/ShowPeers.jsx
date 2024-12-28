@@ -4,25 +4,35 @@ import axios from "axios";
 
 const ShowPeers = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState("false");
-  useEffect(() => {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {    
+    setLoading(true);
+    // Initial call
     getPeersInfo();
+
+    // Set up interval
+    const intervalId = setInterval(() => {
+      getPeersInfo();
+    }, 5000);
+
+    // Clean up on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   const getPeersInfo = () => {
-    setLoading(true);
     axios
       .get("/api/dashboard/show-peers")
       .then(function (response) {
         setData(response.data.data.stdout);
         console.log(response.data.data.stdout);
-        setLoading(false);
       })
       .catch(function (error) {
         // handle error
         console.log(error);
+      }).finally(function () {
+        // always executed
         setLoading(false);
-      });
+      });;
   };
   return (
     <div className="mainContainer">

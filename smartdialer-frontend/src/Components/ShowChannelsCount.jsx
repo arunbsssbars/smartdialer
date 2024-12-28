@@ -4,25 +4,34 @@ import axios from "axios";
 
 const ShowChannelsCount = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState("false");
-  useEffect(() => {
-    getChannelsCount();
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {    
+    setLoading(true);
+     // Initial call
+     getChannelsCount();
+
+     // Set up interval
+     const intervalId = setInterval(() => {
+      getChannelsCount();
+     }, 5000);
+ 
+     // Clean up on component unmount
+     return () => clearInterval(intervalId);
   }, []);
 
   const getChannelsCount = () => {
-    setLoading(true);
     axios
       .get("/api/dashboard/count-channels")
       .then(function (response) {
         setData(response.data.data);
         console.log(response.data.data);
-        setLoading(false);
       })
       .catch(function (error) {
         // handle error
         console.log(error);
+      }).finally(function () {
         setLoading(false);
-      });
+      })
   };
   return (
     <div className="mainContainer">

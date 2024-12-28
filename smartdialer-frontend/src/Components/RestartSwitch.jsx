@@ -19,6 +19,8 @@ const RestartSwitch = () => {
       .catch(function (error) {
         // handle error
         console.log(error);
+        alert(` Please try again !! Failed to Restart Switch with ${error}`);    
+        navigate("/dashboard");
       });
   };
   const handleCancel = () => {

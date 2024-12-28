@@ -21,6 +21,8 @@ setTimeout(() => {
   .catch(function (error) {
     // handle error
     console.log(error);
+    alert(` Please try again !! Failed to Reboot Server with ${error}`);    
+    navigate("/dashboard");
   });
 }, 60*1000)
   };

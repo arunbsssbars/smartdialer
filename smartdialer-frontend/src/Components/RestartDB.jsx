@@ -14,11 +14,12 @@ const RestartDB = () => {
       .then(function (response) {
         console.log(response.data.data);
         if (response.status === 200) alert(`DB is Restarted successfully`);
-        navigate("/dashboard");
       })
       .catch(function (error) {
         // handle error
-        console.log(error);
+        console.log(error);    
+        alert(` Please try again !! Failed to Restart DB with ${error}`);    
+        navigate("/dashboard");
       });
   };
   const handleCancel = () => {

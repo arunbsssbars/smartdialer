@@ -22,7 +22,6 @@ const clearFilter = () => {
         setData(response.data.data.results);
         // navigate('/agent-live')
         console.log(response.data.data.results);
-        setLoading(false);
       })
       .catch(function (error) {
         // handle error

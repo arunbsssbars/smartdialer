@@ -4,20 +4,29 @@ import { useState, useEffect } from "react";
 
 const ManageFilters = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState("false");
+  const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState({
     group: "",
     filterType: "",
     duration: "",
   });
-
   const token = localStorage.getItem("token");
-  useEffect(() => {
+
+  useEffect(() => {    
+    setLoading(true);
+    // Initial call
     getManageFilter();
+
+    // Set up interval
+    const intervalId = setInterval(() => {
+      getManageFilter();
+    }, 2000);
+
+    // Clean up on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   const getManageFilter = () => {
-    setLoading(true);
     axios
       .get("/api/dashboard/manage-filters")
       .then(function (response) {
@@ -98,7 +107,8 @@ const ManageFilters = () => {
             name="group"
             value={filters.group}
             onChange={(e) => handleChange(e)}
-          required>
+            required
+          >
             <option value="">Choose...</option>
             <option value="Group1">Group1</option>
             <option value="Group2">Group2</option>

@@ -4,20 +4,29 @@ import axios from "axios";
 
 const AgentLive = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState("false");
+  const [loading, setLoading] = useState(false);  
+  const token = localStorage.getItem("token");  
   useEffect(() => {
+    // Initial call
+    setLoading(true);
     getLiveAgentsInfo();
+
+   // Set up interval
+   const intervalId = setInterval(() => {
+    getLiveAgentsInfo();
+   }, 5000);
+
+   // Clean up on component unmount
+   return () => clearInterval(intervalId);
   }, []);
 
   const getLiveAgentsInfo = () => {
-    setLoading(true);
     axios
       .get("/api/dashboard/agent-live")
       .then(function (response) {
         setData(response.data.data.results);
         // navigate('/agent-live')
         console.log(response.data.data.results);
-        setLoading(false);
       })
       .catch(function (error) {
         // handle error
@@ -30,7 +39,6 @@ const AgentLive = () => {
   };
 
   const handleAction = async (id, status) => {
-    const token = localStorage.getItem("token");  
     try {
       //backend response will send an updated row data
       const response =

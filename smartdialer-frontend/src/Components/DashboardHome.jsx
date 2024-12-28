@@ -6,9 +6,17 @@ import LiveAgentsInfo from "./AgentLive";
 
 const DashboardHome = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState("true");
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
+    // Initial call
     fetchData();
+    // Set up interval
+    const intervalId = setInterval(() => {
+      fetchData();
+    }, 5000);
+
+    // Clean up on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   const fetchData = () => {
@@ -17,11 +25,14 @@ const DashboardHome = () => {
       .then(function (response) {
         setData(response.data.data.results);
         console.log(response.data.data.results);
-        setLoading(false);
       })
       .catch(function (error) {
         // handle error
         console.log(error);
+      }).finally(function () {
+        
+        
+        setLoading(false);
       });
   };
   return (

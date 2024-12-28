@@ -278,7 +278,7 @@ const updateDuration = asyncHandler(async (req, res) => {
                 new ApiResponse(
                     200,
                     { results },
-                    `Duration for ${results[0]} updated successfully`
+                    `Duration for ${results[0].groups} updated successfully`
                 )
             )
     } catch (error) {

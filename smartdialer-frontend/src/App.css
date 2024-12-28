@@ -396,7 +396,7 @@ header {
     width: 100%;
     display: flex;
     overflow: scroll;
-    scrollbar-width: none;
+    scrollbar-width: none;   
 }
 
 table {

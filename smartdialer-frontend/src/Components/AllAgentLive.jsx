@@ -3,13 +3,21 @@ import axios from "axios";
 
 const AllAgentLive = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState("false");
-  useEffect(() => {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {    
+    setLoading(true);
+    // Initial call
     getAllLiveAgentsInfo();
+    // Set up interval
+    const intervalId = setInterval(() => {
+      getAllLiveAgentsInfo();
+    }, 5000);
+
+    // Clean up on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   const getAllLiveAgentsInfo = () => {
-    setLoading(true);
     axios
       .get("/api/dashboard/all-agent-live")
       .then(function (response) {
@@ -43,7 +51,11 @@ const AllAgentLive = () => {
       <div className="contentContainer">
         <h2>Agent Information</h2>
         <div className="tableData">
-          <table>
+        {loading ? (
+          <h1 style={{ margin: " 10rem", background: "transparent" }}>
+            Loading...
+          </h1>
+        ) : (<table>
             <thead>
               {/* Render column headers */}
               <tr>
@@ -53,7 +65,7 @@ const AllAgentLive = () => {
               </tr>
             </thead>
             <tbody>{renderRows()}</tbody>
-          </table>
+          </table>)}
         </div>
       </div>
     </div>
