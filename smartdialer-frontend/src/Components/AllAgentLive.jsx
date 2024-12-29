@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Spinner from "./Spinner";
 
 const AllAgentLive = () => {
   const [data, setData] = useState([]);
@@ -52,9 +53,7 @@ const AllAgentLive = () => {
         <h2>Agent Information</h2>
         <div className="tableData">
         {loading ? (
-          <h1 style={{ margin: " 10rem", background: "transparent" }}>
-            Loading...
-          </h1>
+          <Spinner/>
         ) : (<table>
             <thead>
               {/* Render column headers */}

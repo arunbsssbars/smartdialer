@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
-import LiveAgentsInfo from "./AgentLive";
+import Spinner from "./Spinner";
 
 const DashboardHome = () => {
   const [data, setData] = useState([]);
@@ -29,9 +29,7 @@ const DashboardHome = () => {
       .catch(function (error) {
         // handle error
         console.log(error);
-      }).finally(function () {
-        
-        
+      }).finally(function () {           
         setLoading(false);
       });
   };
@@ -44,9 +42,7 @@ const DashboardHome = () => {
       <div className="contentContainer">
         <h2>Online Agent Info</h2>
         {loading ? (
-          <h1 style={{ margin: " 10rem", background: "transparent" }}>
-            Loading...
-          </h1>
+          <Spinner/>   
         ) : (
           <div className="tableData">
             <table>

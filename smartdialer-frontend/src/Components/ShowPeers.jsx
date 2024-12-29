@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Spinner from "./Spinner";
 
 const ShowPeers = () => {
   const [data, setData] = useState([]);
@@ -43,9 +44,7 @@ const ShowPeers = () => {
       <div className="contentContainer">
         <h2>Peer Information</h2>
         {loading ? (
-          <h1 style={{ margin: " 10rem", background: "transparent" }}>
-            Loading...
-          </h1>
+         <Spinner/>
         ) : (
           <div className="tableData">
             {data}

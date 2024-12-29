@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import Spinner from "./Spinner";
 const AgentLive = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);  
@@ -79,9 +79,7 @@ const AgentLive = () => {
       <div className="contentContainer">
         <h2>Agent Information</h2>
         {loading ? (
-          <h1 style={{ margin: " 10rem", background: "transparent" }}>
-            Loading...
-          </h1>
+          <Spinner/>
         ) : (
           <div className="tableData">
             <table>

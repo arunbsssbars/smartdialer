@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Spinner from "./Spinner";
 
 const ShowChannelsCount = () => {
   const [data, setData] = useState([]);
@@ -42,9 +43,7 @@ const ShowChannelsCount = () => {
       <div className="contentContainer">
         <h2>Channel Information</h2>
         {loading ? (
-          <h1 style={{ margin: " 10rem", background: "transparent" }}>
-            Loading...
-          </h1>
+         <Spinner />
         ) : (
           <div className="tableData">
             {data.stdout}

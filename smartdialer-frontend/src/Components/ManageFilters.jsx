@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Spinner from "./Spinner";
 
 const ManageFilters = () => {
   const [data, setData] = useState([]);
@@ -54,7 +55,6 @@ const ManageFilters = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
     axios
       .post(
         "/api/dashboard/manage-filters-submit",
@@ -82,7 +82,6 @@ const ManageFilters = () => {
       })
       .finally(function () {
         // always executed
-        setLoading(false);
         setFilters({
           group: "",
           filterType: "",
@@ -166,9 +165,7 @@ const ManageFilters = () => {
       <div className="contentContainer">
         <h2>Existing Filter Details</h2>
         {loading ? (
-          <h1 style={{ margin: " 10rem", background: "transparent" }}>
-            Loading...
-          </h1>
+         <Spinner/>
         ) : (
           <div className="tableData">
             <table>

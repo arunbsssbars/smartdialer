@@ -190,6 +190,7 @@ header {
     width: 100%;
     padding: 1rem;
     background-color: var(--headerBg);
+    border-bottom: 1px solid rgb(207, 206, 206) ;
 }
 
 .dashboardHeading {
@@ -226,7 +227,7 @@ header {
     margin: 1rem;
     transition: transform .1s ease-in-out;
     background: transparent;
-
+border: 1px solid  rgba(171, 48, 48, 0.882);
 }
 
 .logoutBtn svg {
@@ -234,7 +235,8 @@ header {
     height: 2rem;
     border-radius: 50%;
     font-size: 1rem;
-    color: var(--headerText);
+    /* color: var(--headerText); */
+    color:  rgba(171, 48, 48, 0.882);
 }
 
 .logoutBtn:hover {
@@ -254,7 +256,9 @@ header {
     justify-content: flex-start;
     align-items: flex-start;
     background-color: var(--sidebarBg);
-    padding: 1rem;
+    padding: 1rem;    
+    border-right: 1px solid rgb(207, 206, 206) ;
+   
 }
 
 .dashboardController h2 {
@@ -308,13 +312,9 @@ header {
 }
 
 /* Targetting all the Icons */
-/* .allControls li svg{    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;   
-    cursor: pointer;
-} */
+.allControls li svg{  
+   color: rgb(23, 23, 203);
+}
 
 
 .allControls li a:hover {
@@ -330,20 +330,22 @@ header {
 
 .allControls li:last-child {
     background-color: rgba(171, 48, 48, 0.882);
+    color: rgb(237, 229, 229);
     width: max-content;
     border-radius: 5px;
     transition: all .2s ease-in-out;
 }
 
 .allControls li:last-child:hover {
-    background-color: rgba(186, 11, 11, 0.882) !important;
+    background-color: rgba(108, 0, 25, 0.882) !important;
     transform: scale(1.02);
+    color: rgb(34, 32, 32);
     background: transparent;
 }
 
 .dashboardContent {
     flex: 1 1 auto;
-    height: 100vh;
+    height: 120vh;
     display: flex;
     flex-direction: column;
     overflow: scroll;
@@ -751,11 +753,6 @@ select {
 
     .contentContainer h2 {
         font-size: 1.3rem;
-        margin: 0rem;
-    }
-
-    .contentContainer h1 {
-        font-size: 1.2rem;
         margin: 0rem;
     }
 

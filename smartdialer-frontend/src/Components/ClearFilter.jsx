@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect} from "react";
 import { useNavigate } from "react-router";
+import Spinner from "./Spinner";
 const clearFilter = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState("false");
@@ -95,9 +96,7 @@ const clearFilter = () => {
       <div className="contentContainer">
         <h2>Clear Filter automatically</h2>
         {loading ? (
-          <h1 style={{ margin: " 10rem", background: "transparent" }}>
-            Loading...
-          </h1>
+         <Spinner />       
         ) : (
           <div className="tableData">
             <table>

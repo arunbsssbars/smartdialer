@@ -5,11 +5,34 @@
   margin: 0;
   padding: 0;
   /* font-family: Arial, Helvetica, sans-serif; */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
-/* Theme 1*/
+/* Default Theme */
 :root {
+  --bg: #efeeee;  
+  --text: rgb(27, 26, 26);
+  --headerBg: #e5e3e36c;
+  --headerText: #28282c;
+  --headingBg: rgb(223, 222, 222);
+  --heading: #1b1a1a;  
+  --btnBg:  #254280;
+  --btnText:var(--bg);
+  --btnhover:  #854e69;
+  /* --lihover:rgb(43, 40, 40); */
+  --lihoverBg:  rgb(223, 222, 222);
+  --sidebarBg:  #e5e3e36c;
+  --siddebarText: #272525;
+  --tableHover: rgb(229, 229, 229);
+  --loginBg:#544493;
+  --loginText:#e1e1e9;
+  --loginHover:#523da9;
+}
+
+
+/* Theme 1*/
+/* :root {
   --bg: #fcf9f9;
   --text: rgb(34, 32, 32);
   --heading: #19191c;  
@@ -27,13 +50,15 @@
   --loginBg:#544493;
   --loginText:#e1e1e9;
   --loginHover:#523da9;
-/*   --loginBg:#1f2d6b;
-  --loginText:#e1e1e9;
-  --loginHover:#523da9; */
-/*   --loginBg:#502d43;
-  --loginText:#c8c8c8;
-  --loginHover:#6a2951; */
-}
+} */
+
+/* 
+--loginBg:#1f2d6b;
+--loginText:#e1e1e9;
+--loginHover:#523da9;
+--loginBg:#502d43;
+--loginText:#c8c8c8;
+--loginHover:#6a2951; */
 
 /* Theme 2 */
 /* :root {
