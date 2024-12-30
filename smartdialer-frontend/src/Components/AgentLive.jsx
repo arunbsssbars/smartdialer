@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "./Spinner";
+import { Link } from "react-router";
 const AgentLive = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);  
@@ -76,8 +77,16 @@ const AgentLive = () => {
         <h2>Live Agents</h2>
         <p>Realtime Call Connectivity and User Status Display</p>
       </div>
+      <div className="btnContainer">
+          <Link to="/dashboard/agent-live" isActive: true isPending: true>
+            <button className="btn"> Realtime Agent Information</button>
+          </Link>
+          <Link to="/dashboard/all-agent-live" isActive: true isPending: true>
+            <button className="btn"> Live Agent Compact View</button>
+          </Link>
+        </div>
       <div className="contentContainer">
-        <h2>Agent Information</h2>
+        <h2>Realtime Agent Information</h2>
         {loading ? (
           <Spinner/>
         ) : (

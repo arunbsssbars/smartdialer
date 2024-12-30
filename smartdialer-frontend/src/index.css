@@ -10,29 +10,29 @@
 }
 
 /* Default Theme */
-/* :root {
-  --bg: #efeeee;  
+:root {
+  --bg: #fbfbfb;  
   --text: rgb(27, 26, 26);
-  --headerBg: #e5e3e36c;
+  --headerBg: #F2F1F1;
   --headerText: #28282c;
-  --headingBg: rgb(223, 222, 222);
+  --headingBg: rgb(233, 233, 233);
   --heading: #1b1a1a;  
   --btnBg:  #254280;
   --btnText:var(--bg);
   --btnhover:  #854e69;
   --lihover:#272525;
   --lihoverBg:  rgb(223, 222, 222);
-  --sidebarBg:  #e5e3e36c;
+  --sidebarBg:  #f0f0f0;
   --siddebarText: #272525;
-  --tableHover: rgb(229, 229, 229);
+  --tableHover: rgb(245, 245, 245);
   --loginBg:#544493;
   --loginText:#e1e1e9;
   --loginHover:#523da9;
-} */
+}
 
 
 /* Theme 1*/
- :root {
+ /* :root {
   --bg: #fcf9f9;
   --text: rgb(34, 32, 32);
   --heading: #19191c;  
@@ -50,7 +50,7 @@
   --loginBg:#544493;
   --loginText:#e1e1e9;
   --loginHover:#523da9;
-} 
+}  */
 
 /* 
 --loginBg:#1f2d6b;

@@ -13,8 +13,6 @@ const getDashboardDetails = asyncHandler(async (req, res) => {
     try {
         /* Query for online Agent Info */
         const query = 'SELECT groups, COUNT(status) as ActiveCount, active FROM sipusers GROUP BY groups, active';
-        /* Query pending for Call Distribution */
-        // const query = 'SELECT groups, COUNT(status) as ActiveCount, active FROM sipusers GROUP BY groups, active';
 
         const [results] = await executeQuery(query);
         return res

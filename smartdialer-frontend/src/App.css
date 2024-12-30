@@ -184,12 +184,16 @@
 }
 
 header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding: 1rem;
     background-color: var(--headerBg);
+    box-shadow: #dbdbdb 0px 1px 0px 1px;
     /* border-bottom: 1px solid rgb(207, 206, 206); */
 }
 
@@ -212,7 +216,7 @@ header {
 .dashboardHeading p {
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--headerText);    
+    color: var(--headerText);
     font-style: italic;
 }
 
@@ -228,7 +232,7 @@ header {
     margin: 1rem;
     transition: transform .1s ease-in-out;
     background: transparent;
-    /* border: 1px solid  rgba(171, 48, 48, 0.882); */
+    border: 1px solid  rgba(171, 48, 48, 0.882);
 }
 
 .logoutBtn svg {
@@ -237,7 +241,7 @@ header {
     border-radius: 50%;
     font-size: 1rem;
     color: var(--headerText);
-    /* color:  rgba(171, 48, 48, 0.882); */
+    color:  rgba(171, 48, 48, 0.882);
 }
 
 .logoutBtn:hover {
@@ -256,9 +260,8 @@ header {
     justify-content: flex-start;
     align-items: flex-start;
     background-color: var(--sidebarBg);
-    padding: 1rem;    
-    border-right: 1px solid rgb(207, 206, 206) ;
-   
+    padding: 1rem;
+    border-right: 1px solid rgb(207, 206, 206);
 }
 
 .dashboardController h2 {
@@ -274,8 +277,6 @@ header {
 
 .dashboardControls {
     padding: .5rem;
-    overflow: scroll;
-    scrollbar-width: none;
 }
 
 .allControls {
@@ -308,9 +309,11 @@ header {
     transition: all .2s ease-in-out;
 }
 
+
+
 /* Targetting all the Icons */
-.allControls li svg{  
-   /* color: rgb(23, 23, 203); */
+.allControls li svg {
+    color: rgb(212, 63, 152);
 }
 
 .allControls li a:hover {
@@ -320,19 +323,19 @@ header {
     transform: scale(1.01);
 }
 
-.allControls li:last-child {
-    background-color: rgba(171, 48, 48, 0.882);
-    color: rgb(237, 229, 229);
+.allControls li:last-child{   
+    /* color: rgb(239, 231, 231) !important; */
+    /* background-color: rgb(139, 46, 65) !important; */
     width: max-content;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: all .2s ease-in-out;
 }
 
-.allControls li:last-child:hover {
-    background-color: rgba(108, 0, 25, 0.882) !important;
-    transform: scale(1.02);
-    color: rgb(34, 32, 32);
-    background: transparent;
+.allControls li:last-child{  
+}
+.allControls li:last-child a:hover{   
+    color: rgb(239, 231, 231) ;
+    background-color: rgb(94, 29, 42);
 }
 
 .dashboardContent {
@@ -375,7 +378,7 @@ header {
 .contentContainer p {
     font-size: 1rem;
     font-weight: 400;
-    padding: .5rem;    
+    padding: .5rem;
     font-style: italic;
 }
 
@@ -383,7 +386,7 @@ header {
     width: 100%;
     display: flex;
     overflow: scroll;
-    scrollbar-width: none;   
+    scrollbar-width: none;
 }
 
 table {
@@ -471,6 +474,8 @@ select {
 
 
 
+
+
 .hardwareInfo {
     flex: 1 1 auto;
     /* border: 1px solid #b6c3b6; */
@@ -481,6 +486,7 @@ select {
     font-size: 1.2rem;
     width: 100%;
     padding: .9rem;
+    font-style: normal;
     /* border-bottom: 1px solid #cfd4cf6f; */
 
 }
@@ -527,7 +533,7 @@ select {
     font-size: 1.2rem;
     width: 100%;
     padding: .5rem;
-    border-bottom: #cfd4cf6f;    
+    border-bottom: #cfd4cf6f;
     font-style: italic;
 }
 
@@ -605,8 +611,7 @@ select {
         border-bottom: 1px solid var(--loginText);
     }
 
-    .iconContainer svg {
-    }
+    .iconContainer svg {}
 
     .dashboardContainer {
         margin: 0rem;
