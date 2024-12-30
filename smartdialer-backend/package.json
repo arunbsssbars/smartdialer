@@ -5,7 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js",
+     "build": " esbuild src/index.js --bundle --platform=node --format=esm --outdir=dist"
   },
   "keywords": [
     "javascript",
@@ -16,6 +17,7 @@
   "author": "Arun Kumar",
   "license": "ISC",
   "devDependencies": {
+    "esbuild": "^0.24.2",
     "nodemon": "^3.1.7",
     "prettier": "^3.0.3"
   },

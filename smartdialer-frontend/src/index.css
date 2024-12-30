@@ -10,7 +10,7 @@
 }
 
 /* Default Theme */
-:root {
+/* :root {
   --bg: #efeeee;  
   --text: rgb(27, 26, 26);
   --headerBg: #e5e3e36c;
@@ -20,7 +20,7 @@
   --btnBg:  #254280;
   --btnText:var(--bg);
   --btnhover:  #854e69;
-  /* --lihover:rgb(43, 40, 40); */
+  --lihover:#272525;
   --lihoverBg:  rgb(223, 222, 222);
   --sidebarBg:  #e5e3e36c;
   --siddebarText: #272525;
@@ -28,11 +28,11 @@
   --loginBg:#544493;
   --loginText:#e1e1e9;
   --loginHover:#523da9;
-}
+} */
 
 
 /* Theme 1*/
-/* :root {
+ :root {
   --bg: #fcf9f9;
   --text: rgb(34, 32, 32);
   --heading: #19191c;  
@@ -50,7 +50,7 @@
   --loginBg:#544493;
   --loginText:#e1e1e9;
   --loginHover:#523da9;
-} */
+} 
 
 /* 
 --loginBg:#1f2d6b;
