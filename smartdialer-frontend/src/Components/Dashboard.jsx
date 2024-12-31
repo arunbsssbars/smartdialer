@@ -10,14 +10,13 @@ import { RiWechatChannelsFill } from "react-icons/ri";
 import { LuLayoutDashboard } from "react-icons/lu";
 import React, { useEffect, useRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-const Dashboard = ({handleLogout, handleSession}) => {
+const Dashboard = ({handleLogout}) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const hemRef = useRef(null);
 
   // Close menu when clicking outside
   useEffect(() => {
-    handleSession();
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target) && !hemRef.current.contains(event.target)) {
         setMenuOpen(false);

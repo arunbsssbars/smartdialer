@@ -105,6 +105,7 @@ const clearFilter = () => {
                   <th>ID</th>
                   <th>GROUP NAME</th>
                   <th>DURATION(MINS)</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -147,7 +148,7 @@ const clearFilter = () => {
             </p>
           </div>
           <div className="btnContainer">
-            <button className="btn" style={{ backgroundColor: "crimson" }} name='all' onClick={(e)=>handleClearBulkFilter(e)}>
+            <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} name='all' onClick={(e)=>handleClearBulkFilter(e)}>
               Truncate
             </button>
             <button className="btn" onClick={handleCancel}>Cancel</button>
@@ -163,7 +164,7 @@ const clearFilter = () => {
             </p>
           </div>
           <div className="btnContainer">
-            <button className="btn" style={{ backgroundColor: "crimson" }} name='group1' onClick={(e)=>handleClearBulkFilter(e)}>
+            <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} name='group1' onClick={(e)=>handleClearBulkFilter(e)}>
               Truncate
             </button>
             <button className="btn" onClick={handleCancel}>Cancel</button>
@@ -179,7 +180,7 @@ const clearFilter = () => {
             </p>
           </div>
           <div className="btnContainer">
-            <button className="btn" style={{ backgroundColor: "crimson" }} name='group2' onClick={(e)=>handleClearBulkFilter(e)}>
+            <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} name='group2' onClick={(e)=>handleClearBulkFilter(e)}>
               Truncate
             </button>
             <button className="btn" onClick={handleCancel}>Cancel</button>
@@ -195,7 +196,7 @@ const clearFilter = () => {
             </p>
           </div>
           <div className="btnContainer">
-            <button className="btn" style={{ backgroundColor: "crimson" }} name='group3' onClick={(e)=>handleClearBulkFilter(e)}>
+            <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} name='group3' onClick={(e)=>handleClearBulkFilter(e)}>
               Truncate
             </button>
             <button className="btn" onClick={handleCancel}>Cancel</button>
@@ -211,7 +212,7 @@ const clearFilter = () => {
             </p>
           </div>
           <div className="btnContainer">
-            <button className="btn" style={{ backgroundColor: "crimson" }} name='group4' onClick={(e)=>handleClearBulkFilter(e)}>
+            <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} name='group4' onClick={(e)=>handleClearBulkFilter(e)}>
               Truncate
             </button>
             <button className="btn" onClick={handleCancel}>Cancel</button>
@@ -227,7 +228,7 @@ const clearFilter = () => {
             </p>
           </div>
           <div className="btnContainer">
-            <button className="btn" style={{ backgroundColor: "crimson" }} name='group5' onClick={(e)=>handleClearBulkFilter(e)}>
+            <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} name='group5' onClick={(e)=>handleClearBulkFilter(e)}>
               Truncate
             </button>
             <button className="btn" onClick={handleCancel}>Cancel</button>

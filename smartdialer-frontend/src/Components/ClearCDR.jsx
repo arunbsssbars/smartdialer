@@ -38,7 +38,7 @@ const ClearCDR = () => {
         <div className="btnContainer">
           <button
             className="btn"
-            style={{ backgroundColor: "crimson" }}
+            style={{ backgroundColor: " rgb(152, 12, 40)" }}
             onClick={handleClearCDR}
           >
             Truncate

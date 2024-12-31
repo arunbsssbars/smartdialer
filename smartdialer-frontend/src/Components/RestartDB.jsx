@@ -38,7 +38,7 @@ const RestartDB = () => {
           </p>
         </div>
         <div className="btnContainer">
-          <button className="btn" style={{ backgroundColor: "crimson" }} onClick={handleRestartDB}>
+          <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} onClick={handleRestartDB}>
             Restart
           </button>
           <button className="btn" onClick={handleCancel}>Cancel</button>

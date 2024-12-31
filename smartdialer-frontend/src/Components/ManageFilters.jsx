@@ -13,7 +13,7 @@ const ManageFilters = () => {
   });
   const token = localStorage.getItem("token");
 
-  useEffect(() => {    
+  useEffect(() => {
     setLoading(true);
     // Initial call
     getManageFilter();
@@ -165,7 +165,7 @@ const ManageFilters = () => {
       <div className="contentContainer">
         <h2>Existing Filter Details</h2>
         {loading ? (
-         <Spinner/>
+          <Spinner />
         ) : (
           <div className="tableData">
             <table>

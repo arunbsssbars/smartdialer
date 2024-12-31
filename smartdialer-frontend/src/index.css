@@ -10,7 +10,7 @@
 }
 
 /* Default Theme */
-:root {
+/* :root {
   --bg: #fbfbfb;  
   --text: rgb(27, 26, 26);
   --headerBg: #F2F1F1;
@@ -28,11 +28,11 @@
   --loginBg:#544493;
   --loginText:#e1e1e9;
   --loginHover:#523da9;
-}
+} */
 
 
 /* Theme 1*/
- /* :root {
+ :root {
   --bg: #fcf9f9;
   --text: rgb(34, 32, 32);
   --heading: #19191c;  
@@ -50,7 +50,7 @@
   --loginBg:#544493;
   --loginText:#e1e1e9;
   --loginHover:#523da9;
-}  */
+} 
 
 /* 
 --loginBg:#1f2d6b;

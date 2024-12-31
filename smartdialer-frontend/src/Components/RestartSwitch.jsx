@@ -39,7 +39,7 @@ const RestartSwitch = () => {
           </p>
         </div>
         <div className="btnContainer">
-          <button className="btn" style={{ backgroundColor: "crimson" }} onClick={handleRestartSwitch}>
+          <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} onClick={handleRestartSwitch}>
             Restart
           </button>
           <button className="btn" onClick={handleCancel}>Cancel</button>

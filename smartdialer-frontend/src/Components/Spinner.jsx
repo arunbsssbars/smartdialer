@@ -2,8 +2,7 @@ import React from "react";
 import { ColorRing } from "react-loader-spinner";
 const Spinner = () => {
   return (
-    <div  style={{height: '60vh', margin: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-      <div>
+    <div  id='spinner' style={{height: '60vh', margin: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>     
         <ColorRing
           visible={true}
           height="60"
@@ -14,7 +13,6 @@ const Spinner = () => {
           wrapperClass="color-ring-wrapper"
           colors={[""]}
         />
-      </div>
       <h1 style={{marginLeft: '0.5rem', backgroundColor: 'transparent'}}>Loading</h1>
     </div>
   );
