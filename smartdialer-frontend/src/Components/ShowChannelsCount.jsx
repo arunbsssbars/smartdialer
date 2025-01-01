@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "./Spinner";
+import { toast, ToastContainer } from "react-toastify";
 
 const ShowChannelsCount = () => {
   const [data, setData] = useState([]);
@@ -28,7 +29,8 @@ const ShowChannelsCount = () => {
         console.log(response.data.data);
       })
       .catch(function (error) {
-        // handle error
+        // handle error        
+        toast.error(`${error.message}`);
         console.log(error);
       }).finally(function () {
         setLoading(false);
@@ -36,6 +38,7 @@ const ShowChannelsCount = () => {
   };
   return (
     <div className="mainContainer">
+      <ToastContainer/>
       <div className="contentContainer">
         <h2>Show Channels</h2>
         <p>Realtime Call Connectivity and User Status Display</p>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect} from "react";
 import { useNavigate } from "react-router";
 import Spinner from "./Spinner";
+import { toast, ToastContainer } from "react-toastify";
 const clearFilter = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState("false");
@@ -53,12 +54,13 @@ const clearFilter = () => {
         headers: {
           'Authorization': `Bearer ${token}`
       }});
-      if(response.status === 200) alert(`Duration ${response.data.data.results[0].cleartime} ${response.data.data.results[0].cleartime>1 ? 'Minutes' : 'Minute'} is successfully updated for ${response.data.data.results[0].groups}`)
+      if(response.status === 200) toast.success(`Duration ${response.data.data.results[0].cleartime} ${response.data.data.results[0].cleartime>1 ? 'Minutes' : 'Minute'} is successfully updated for ${response.data.data.results[0].groups}`)
       console.log(
       `Duration ${response.data.data.results[0].cleartime} ${response.data.data.results[0].cleartime>1 ? 'Minutes' : 'Minute'} is successfully updated for ${response.data.data.results[0].groups}`
       );
     } catch (error) {
-      console.log(`Error While updating Duration`, error);
+      console.log(`Error While updating Duration for ${response.data.data.results[0].groups} `, error);
+      toast.error(`Error While updating Duration ${response.data.data.results[0].groups} `, error);
     }
   };
 
@@ -71,12 +73,13 @@ const clearFilter = () => {
           'Authorization': `Bearer ${token}`
       }})
       .then(function (response) {
-        if (response.status === 200) alert(`Filter for ${response.data.data.groupName} is successfully cleared`);
+        if (response.status === 200) toast.success(`Filter for ${response.data.data.groupName} is successfully cleared`);
         // navigate("/dashboard");
       })
       .catch(function (error) {
         // handle error
         console.log(error);
+        toast.error(`Failed to clear filter for ${response.data.data.groupName} Error:`, error);
       });
   };
 
@@ -86,6 +89,7 @@ const clearFilter = () => {
   };
   return (
     <div className="mainContainer">
+      <ToastContainer autoClose={2000}/>
       <div className="contentContainer">
         <h2>Clear Filter Table</h2>
         <p>Realtime Call Connectivity and User Status Display</p>

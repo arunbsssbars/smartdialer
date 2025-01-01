@@ -1,23 +1,29 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 const ClearCDR = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const handleClearCDR = () => {
     axios
-      .post("/api/dashboard/clear-cdr", null,{
+      .post("/api/dashboard/clear-cdr", null, {
         headers: {
-          'Authorization': `Bearer ${token}`
-      }})
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then(function (response) {
         console.log(response.data.data);
-        if (response.status === 200) alert(`CDR is successfully cleared`);
-        navigate("/dashboard");
+        if (response.status === 200) 
+          toast.success("CDR is successfully cleared");  
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000)
       })
       .catch(function (error) {
         // handle error
         console.log(error);
+        toast.error(`Failed to clear CDR`);
       });
   };
   const handleCancel = () => {
@@ -26,6 +32,7 @@ const ClearCDR = () => {
   };
   return (
     <>
+      <ToastContainer autoClose={1000} />
       <div className=" confirmContainer">
         <h2>Confirm</h2>
         <div className="confirmContent">

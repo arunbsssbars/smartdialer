@@ -5,7 +5,8 @@ const RebootServer = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const handleRebootServer = () => {
-    alert("Processing Reboot Request....close your admin panel...TIMEOUT:60 secs");
+    alert("Processing Reboot Request....close your admin panel...TIMEOUT:60 secs");    
+    navigate("/dashboard");
 setTimeout(() => {
   axios
   .post("/api/dashboard/reboot-server", null, {
@@ -15,13 +16,12 @@ setTimeout(() => {
   })
   .then(function (response) {
     console.log(response.data.data);
-    if (response.status === 200) alert(`Server is Rebooted successfully`);
-    navigate("/dashboard");
+    if (response.status === 200) alert(response.data.message);
   })
   .catch(function (error) {
     // handle error
-    console.log(error);
-    alert(` Please try again !! Failed to Reboot Server with ${error}`);    
+    console.log(error.response.data);
+    alert(` Please try again !! Failed to Reboot Server`);    
     navigate("/dashboard");
   });
 }, 60*1000)

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "./Spinner";
 import { Link } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
 const AgentLive = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);  
@@ -60,19 +61,22 @@ const AgentLive = () => {
         )
       );
       if(response.status === 200){
-        alert(`Agent with User Name ${response.data.data.results[0].username} is being ${status==="active" ? "paused" : "resumed"} successfully`);
+        // alert(`Agent with User Name ${response.data.data.results[0].username} is being ${status==="active" ? "paused" : "resumed"} successfully`);
+        toast.success(`Agent ${response.data.data.results[0].username} ${status==="active" ? "paused" : "resumed"} successfully`);
       }
     } catch (error) {
       console.log(
         `Error in ${status === "active" ? "pausing" : "resuming"} the agent`,
         error
       );
+      toast.error(`Error in ${status === "active" ? "pausing" : "resuming"} the agent ${response.data.data.results[0].username}`);
     }
   };
 
   
   return (
     <div className="mainContainer">
+      <ToastContainer autoClose={2000}/>     
       <div className="contentContainer">
         <h2>Live Agents</h2>
         <p>Realtime Call Connectivity and User Status Display</p>
@@ -123,7 +127,7 @@ const AgentLive = () => {
                         }}
                       >
                         {item.active === "active" ? "PAUSE" : "RESUME"}
-                      </button>
+                      </button>                      
                     </td>
                   </tr>
                 ))}

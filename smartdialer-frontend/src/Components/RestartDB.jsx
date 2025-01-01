@@ -18,7 +18,7 @@ const RestartDB = () => {
       .catch(function (error) {
         // handle error
         console.log(error);    
-        alert(` Please try again !! Failed to Restart DB with ${error}`);    
+        alert(` Please try again !! Failed to Restart DB`);    
         navigate("/dashboard");
       });
   };

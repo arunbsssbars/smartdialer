@@ -75,81 +75,27 @@ function App() {
         {!token ? (
           <>
             <Route path="*" element={<Navigate to="/" replace />} />
-            <Route
-              path="/"
-              element={
-                <Login setToken={setToken} setTokenExpiry={setTokenExpiry} />
-              }
-            />
+            <Route path="/" element={<Login setToken={setToken} setTokenExpiry={setTokenExpiry} />}/>
           </>
         ) : (
           <>
             <Route path="/" element={<Navigate to="/dashboard" />} />
-            <Route
-              path="/dashboard"
-              element={<Dashboard handleLogout={handleLogout} />}
-            >
+            <Route path="/dashboard" element={<Dashboard handleLogout={handleLogout} />}>
               <Route index element={<DashboardHome />} />
-              <Route
-                path="/dashboard/show-channels"
-                element={<ShowChannels />}
-              />
-              <Route
-                path="/dashboard/count-channels"
-                element={<ShowChannelsCount />}
-              />
+              <Route path="/dashboard/show-channels" element={<ShowChannels />}/>
+              <Route path="/dashboard/count-channels" element={<ShowChannelsCount />}/>
               <Route path="/dashboard/show-peers" element={<ShowPeers />} />
-              <Route
-                path="/dashboard/manage-filters"
-                element={<ManageFilters />}
-              />
+              <Route path="/dashboard/manage-filters" element={<ManageFilters />}/>
               <Route path="/dashboard/clear-cdr" element={<ClearCDR />} />
               <Route path="/dashboard/clear-filter" element={<ClearFilter />} />
               <Route path="/dashboard/restart-db" element={<RestartDB />} />
-              <Route
-                path="/dashboard/restart-switch"
-                element={<RestartSwitch />}
-              />
-              <Route
-                path="/dashboard/reboot-server"
-                element={<RebootServer />}
-              />
+              <Route path="/dashboard/restart-switch" element={<RestartSwitch />}/>
+              <Route path="/dashboard/reboot-server" element={<RebootServer />}/>
               <Route path="/dashboard/agent-live" element={<AgentLive />} />
-              <Route
-                path="/dashboard/all-agent-live"
-                element={<AllAgentLive />}
-              />
-              <Route
-                path="*"
-                element={
-                  <h1
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      height: "100vh",
-                    }}
-                  >
-                    Error 404: Page Not Found
-                  </h1>
-                }
-              />
+              <Route path="/dashboard/all-agent-live" element={<AllAgentLive />}/>
+              <Route path="*" element={ <h1 style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100vh",}}>Error 404: Page Not Found</h1>}/>
             </Route>
-            <Route
-              path="*"
-              element={
-                <h1
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "100vh",
-                  }}
-                >
-                  Error 404: Page Not Found
-                </h1>
-              }
-            />
+            <Route path="*" element={ <h1 style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100vh",}}>Error 404: Page Not Found</h1>}/>
           </>
         )}
       </Routes>

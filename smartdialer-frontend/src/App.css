@@ -284,14 +284,15 @@ header {
     padding: .5rem;
     overflow: scroll;
     scrollbar-width: none;
-    
+    scroll-behavior: smooth;
+
 }
 
 .allControls {
     display: flex;
     flex-direction: column;
     gap: .5rem;
-    
+
 }
 
 .allControls li {
@@ -304,7 +305,7 @@ header {
     font-size: 1.5rem;
     font-weight: 600;
     cursor: pointer;
-    
+
 }
 
 .allControls li a {
@@ -398,7 +399,7 @@ header {
     width: 100%;
     display: flex;
     overflow: scroll;
-    scrollbar-width: none;    
+    scrollbar-width: none;
 }
 
 table {
@@ -408,10 +409,10 @@ table {
 }
 
 th {
-    padding: .9rem;
+    padding: .7rem;
     font-size: 1.2rem;
     background-color: #e9e9e9;
-   
+
 }
 
 td {
@@ -423,7 +424,7 @@ td {
 
 tr {
     border-spacing: 0;
-    transition: all .1s ease-in-out;   
+    transition: all .1s ease-in-out;
 }
 
 tr:nth-child(even) {
@@ -634,7 +635,7 @@ select {
     }
 
     header {
-        padding: .5rem;       
+        padding: .5rem;
         z-index: 101;
     }
 

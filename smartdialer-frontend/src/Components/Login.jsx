@@ -4,6 +4,7 @@ import axios from "axios";
 import { MdOutlineEmail } from "react-icons/md";
 import { TbLockPassword } from "react-icons/tb";
 import { MdOutlineAssignmentInd } from "react-icons/md";
+import { toast, ToastContainer } from "react-toastify";
 
 const Login = ({ setToken, setTokenExpiry }) => {
   const [formData, setformData] = useState({
@@ -23,8 +24,14 @@ const Login = ({ setToken, setTokenExpiry }) => {
         password: "",
       });
     } catch (error) {
-      console.error("Error logging in:", error);
-      alert("Invalid credentials!");
+      setformData({
+        email: "",
+        password: "",
+      });
+      console.log("Error logging in:", error.response.data);
+      if (error.response) {
+        toast.error(error.response.data); // Display the error message as a toast
+      }
     }
   };
 
@@ -35,6 +42,7 @@ const Login = ({ setToken, setTokenExpiry }) => {
   
   return (
     <div className="formMainContainer">
+      <ToastContainer autoClose={2000} />
       <div className="loginContainer">
         <div className="formContainer">
           <h3>
