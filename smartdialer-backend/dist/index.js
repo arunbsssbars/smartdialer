@@ -46524,24 +46524,21 @@ var executeQuery = async (query, params = []) => {
 var loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   if (!email && !password) {
-    throw new ApiError(400, "email or password is required");
+    throw new ApiError(res.json(400, "email or password is required"));
   }
   const queryUser = "SELECT id, username, usertype, allowed_procss, dialing_dest, status FROM dialme WHERE username = ?";
   const [[user]] = await executeQuery(queryUser, [email]);
   if (!user) {
-    throw new ApiError(404, "User does not exist");
+    throw new ApiError(res.json(404, "User does not exist"));
   }
   const userValidationQuery = "SELECT * FROM dialme WHERE id = ?";
   const [[validUser]] = await executeQuery(userValidationQuery, [user.id]);
   const isPasswordValid = validUser.passcode === password;
   if (!isPasswordValid) {
-    throw new ApiError(401, "Invalid user credentials");
+    throw new ApiError(res.json(401, "Invalid user credentials"));
   }
   const accessToken = import_jsonwebtoken.default.sign({ id: validUser.id, username: validUser.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.ACCESS_TOKEN_EXPIRY });
   const DecodedUser = import_jsonwebtoken.default.decode(accessToken);
-  console.log("The Decoded User contains", DecodedUser);
-  console.log("Token Duration", DecodedUser.exp - DecodedUser.iat);
-  console.log(accessToken);
   const loggedInUser = user;
   return res.status(200).json(
     new ApiResponse(
