@@ -38,8 +38,9 @@ const ShowChannels = () => {
       });
   };
   return (
+  <>
+  <ToastContainer autoClose={1000} />
     <div className="mainContainer">
-      <ToastContainer/>
       <div className="contentContainer">
         <h2>Show Channels</h2>
         <p>Realtime Call Connectivity and User Status Display</p>
@@ -89,6 +90,7 @@ const ShowChannels = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

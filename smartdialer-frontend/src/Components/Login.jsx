@@ -39,53 +39,55 @@ const Login = ({ setToken, setTokenExpiry }) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
     console.log(formData);
   };
-  
+
   return (
-    <div className="formMainContainer">
+    <>
       <ToastContainer autoClose={2000} />
-      <div className="loginContainer">
-        <div className="formContainer">
-          <h3>
-            <span>
-              <MdOutlineAssignmentInd />
-            </span>
-            Sign-In
-          </h3>
-          <form className="loginForm" onSubmit={handleForm}>
-            {/* <h2>Email</h2> */}
-            <div className="iconContainer">
-              <MdOutlineEmail />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleOnChange}
-                placeholder="Enter Email"
-              />
-            </div>
-            {/* <h2>Password</h2> */}
-            <div className="iconContainer">
-              <TbLockPassword />
-              <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={(e) => handleOnChange(e)}
-                placeholder="Enter Password"
-              />
-            </div>
-            <button type="submit">Login</button>
-          </form>
+      <div className="formMainContainer">
+        <div className="loginContainer">
+          <div className="formContainer">
+            <h3>
+              <span>
+                <MdOutlineAssignmentInd />
+              </span>
+              Sign-In
+            </h3>
+            <form className="loginForm" onSubmit={handleForm}>
+              {/* <h2>Email</h2> */}
+              <div className="iconContainer">
+                <MdOutlineEmail />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleOnChange}
+                  placeholder="Enter Email"
+                />
+              </div>
+              {/* <h2>Password</h2> */}
+              <div className="iconContainer">
+                <TbLockPassword />
+                <input
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={(e) => handleOnChange(e)}
+                  placeholder="Enter Password"
+                />
+              </div>
+              <button type="submit">Login</button>
+            </form>
+          </div>
+        </div>
+        <div className="loginImage">
+          <div className="loginHeader">
+            <h1>Routing</h1>
+            <p>Dialer</p>
+          </div>
+          {/* <img src=".\src\assets\login15.jpg" /> */}
         </div>
       </div>
-      <div className="loginImage">
-        <div className="loginHeader">
-          <h1>Routing</h1>
-          <p>Dialer</p>
-        </div>
-        {/* <img src=".\src\assets\login15.jpg" /> */}
-      </div>
-    </div>
+    </>
   );
 };
 

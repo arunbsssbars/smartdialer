@@ -53,8 +53,7 @@ const AllAgentLive = () => {
       <div className="contentContainer">
         <h2>Live Agents</h2>
         <p>Realtime Call Connectivity and User Status Display</p>
-      </div>
-      
+      </div>      
       <div className="btnContainer">
           <Link to="/dashboard/agent-live">
             <button className="btn"> Realtime Agent Information</button>

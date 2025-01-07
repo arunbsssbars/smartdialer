@@ -7,7 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 const ShowPeers = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  useEffect(() => {    
+  useEffect(() => {
     setLoading(true);
     // Initial call
     getPeersInfo();
@@ -30,28 +30,30 @@ const ShowPeers = () => {
       })
       .catch(function (error) {
         // handle error
-        console.log(error);        
+        console.log(error);
         toast.error(`${error.message}`);
-      }).finally(function () {
+      })
+      .finally(function () {
         // always executed
         setLoading(false);
-      });;
+      });
   };
   return (
-    <div className="mainContainer">
-      <ToastContainer/>
-      <div className="contentContainer">
-        <h2>Show Call Peers</h2>
-        <p>Realtime Call Connectivity and User Status Display</p>
-      </div>
-      <div className="contentContainer">
-        <h2>Peer Information</h2>
-        {loading ? (
-         <Spinner/>
-        ) : (
-          <div className="tableData">
-            {data}
-            {/*             <table>
+    <>
+      <ToastContainer autoClose={2000} />
+      <div className="mainContainer">
+        <div className="contentContainer">
+          <h2>Show Call Peers</h2>
+          <p>Realtime Call Connectivity and User Status Display</p>
+        </div>
+        <div className="contentContainer">
+          <h2>Peer Information</h2>
+          {loading ? (
+            <Spinner />
+          ) : (
+            <div className="tableData">
+              {data}
+              {/*             <table>
               <thead>
                 <tr>
                   <th>ID</th>
@@ -85,10 +87,11 @@ const ShowPeers = () => {
                 ))}
               </tbody>
             </table> */}
-          </div>
-        )}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

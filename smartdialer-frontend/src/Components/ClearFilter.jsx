@@ -1,20 +1,19 @@
 import React from "react";
 import axios from "axios";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import Spinner from "./Spinner";
 import { toast, ToastContainer } from "react-toastify";
 const clearFilter = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState("false");
-  const [groupName, setGroupName] = useState('')
-  const token=localStorage.getItem("token");  
+  const [groupName, setGroupName] = useState("");
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   useEffect(() => {
     getClearFilterInitialData();
   }, []);
-
 
   const getClearFilterInitialData = () => {
     setLoading(true);
@@ -48,19 +47,37 @@ const clearFilter = () => {
     // Perform update logic (e.g., API call) here
     try {
       //backend response will send an updated row data
-      const response = await axios.post("/api/dashboard/update-duration", {
-        itemToBeUpdated,
-      },{
-        headers: {
-          'Authorization': `Bearer ${token}`
-      }});
-      if(response.status === 200) toast.success(`Duration ${response.data.data.results[0].cleartime} ${response.data.data.results[0].cleartime>1 ? 'Minutes' : 'Minute'} is successfully updated for ${response.data.data.results[0].groups}`)
+      const response = await axios.post(
+        "/api/dashboard/update-duration",
+        {
+          itemToBeUpdated,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.status === 200)
+        toast.success(
+          `${response.data.data.results[0].groups}: Duration ${response.data.data.results[0].cleartime} ${
+            response.data.data.results[0].cleartime > 1 ? "Mins" : "Min"
+          } is successfully updated`
+        );
       console.log(
-      `Duration ${response.data.data.results[0].cleartime} ${response.data.data.results[0].cleartime>1 ? 'Minutes' : 'Minute'} is successfully updated for ${response.data.data.results[0].groups}`
+        `Duration ${response.data.data.results[0].cleartime} ${
+          response.data.data.results[0].cleartime > 1 ? "Minutes" : "Minute"
+        } is successfully updated for ${response.data.data.results[0].groups}`
       );
     } catch (error) {
-      console.log(`Error While updating Duration for ${response.data.data.results[0].groups} `, error);
-      toast.error(`Error While updating Duration ${response.data.data.results[0].groups} `, error);
+      console.log(
+        `Error While updating Duration for ${response.data.data.results[0].groups} `,
+        error
+      );
+      toast.error(
+        `Error While updating Duration ${response.data.data.results[0].groups} `,
+        error
+      );
     }
   };
 
@@ -68,18 +85,29 @@ const clearFilter = () => {
     setGroupName(e.target.name);
     const groupName = e.target.name;
     axios
-      .post("/api/dashboard/clear-Bulk-Filter", {groupName},{
-        headers: {
-          'Authorization': `Bearer ${token}`
-      }})
+      .post(
+        "/api/dashboard/clear-Bulk-Filter",
+        { groupName },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then(function (response) {
-        if (response.status === 200) toast.success(`Filter for ${response.data.data.groupName} is successfully cleared`);
+        if (response.status === 200)
+          toast.success(
+            `Filter for ${response.data.data.groupName} is successfully cleared`
+          );
         // navigate("/dashboard");
       })
       .catch(function (error) {
         // handle error
         console.log(error);
-        toast.error(`Failed to clear filter for ${response.data.data.groupName} Error:`, error);
+        toast.error(
+          `Failed to clear filter for ${response.data.data.groupName} Error:`,
+          error
+        );
       });
   };
 
@@ -88,158 +116,202 @@ const clearFilter = () => {
     navigate("/dashboard");
   };
   return (
-    <div className="mainContainer">
-      <ToastContainer autoClose={2000}/>
-      <div className="contentContainer">
-        <h2>Clear Filter Table</h2>
-        <p>Realtime Call Connectivity and User Status Display</p>
-      </div>
-      <div className="contentContainer">
-        <h2>Group Auto Filter Delete</h2>
-      </div>
-      <div className="contentContainer">
-        <h2>Clear Filter automatically</h2>
-        {loading ? (
-         <Spinner />       
-        ) : (
-          <div className="tableData">
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>GROUP NAME</th>
-                  <th>DURATION(MINS)</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.id}</td>
-                    <td>{item.groups}</td>
-                    <td>
-                      <input
-                        id="updateDuration"
-                        type="text"
-                        name="duration"
-                        value={item.cleartime}
-                        onChange={(e) => handleChangeDuration(e, item.id)}
-                      />
-                    </td>
-                    <td>
-                      <button
-                        className="btn"
-                        onClick={() => handleUpdateDuration(item.id)}
-                      >
-                        Update
-                      </button>
-                    </td>
+    <>
+      <ToastContainer autoClose={2000} />
+      <div className="mainContainer">
+        <div className="contentContainer">
+          <h2>Clear Filter Table</h2>
+          <p>Realtime Call Connectivity and User Status Display</p>
+        </div>
+        <div className="contentContainer">
+          <h2>Group Auto Filter Delete</h2>
+        </div>
+        <div className="contentContainer">
+          <h2>Clear Filter automatically</h2>
+          {loading ? (
+            <Spinner />
+          ) : (
+            <div className="tableData">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>GROUP NAME</th>
+                    <th>DURATION(MINS)</th>
+                    <th>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {data.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.id}</td>
+                      <td>{item.groups}</td>
+                      <td>
+                        <input
+                          id="updateDuration"
+                          type="text"
+                          name="duration"
+                          value={item.cleartime}
+                          onChange={(e) => handleChangeDuration(e, item.id)}
+                        />
+                      </td>
+                      <td>
+                        <button
+                          className="btn"
+                          onClick={() => handleUpdateDuration(item.id)}
+                        >
+                          Update
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+        <div className="contentContainer">
+          <div className=" confirmContainer">
+            <h2>Confirm</h2>
+            <div className="confirmContent">
+              <h1>Clear Filter ALL. Please Confirm</h1>
+              <p>
+                This will Truncate the filter table. Cancel if you change your
+                mind
+              </p>
+            </div>
+            <div className="btnContainer">
+              <button
+                className="btn"
+                style={{ backgroundColor: " rgb(152, 12, 40)" }}
+                name="all"
+                onClick={(e) => handleClearBulkFilter(e)}
+              >
+                Truncate
+              </button>
+              <button className="btn" onClick={handleCancel}>
+                Cancel
+              </button>
+            </div>
           </div>
-        )}
+          <div className=" confirmContainer">
+            <h2>Confirm Clean Group 1</h2>
+            <div className="confirmContent">
+              <h1>Clear Filter Group1. Please Confirm</h1>
+              <p>
+                This will Truncate the filter table. Cancel if you change your
+                mind
+              </p>
+            </div>
+            <div className="btnContainer">
+              <button
+                className="btn"
+                style={{ backgroundColor: " rgb(152, 12, 40)" }}
+                name="group1"
+                onClick={(e) => handleClearBulkFilter(e)}
+              >
+                Truncate
+              </button>
+              <button className="btn" onClick={handleCancel}>
+                Cancel
+              </button>
+            </div>
+          </div>
+          <div className=" confirmContainer">
+            <h2>Confirm Clean Group 2</h2>
+            <div className="confirmContent">
+              <h1>Clear Filter Group2. Please Confirm</h1>
+              <p>
+                This will Truncate the filter table. Cancel if you change your
+                mind
+              </p>
+            </div>
+            <div className="btnContainer">
+              <button
+                className="btn"
+                style={{ backgroundColor: " rgb(152, 12, 40)" }}
+                name="group2"
+                onClick={(e) => handleClearBulkFilter(e)}
+              >
+                Truncate
+              </button>
+              <button className="btn" onClick={handleCancel}>
+                Cancel
+              </button>
+            </div>
+          </div>
+          <div className=" confirmContainer">
+            <h2>Confirm Clean Group 3</h2>
+            <div className="confirmContent">
+              <h1>Clear Filter Group3. Please Confirm</h1>
+              <p>
+                This will Truncate the filter table. Cancel if you change your
+                mind
+              </p>
+            </div>
+            <div className="btnContainer">
+              <button
+                className="btn"
+                style={{ backgroundColor: " rgb(152, 12, 40)" }}
+                name="group3"
+                onClick={(e) => handleClearBulkFilter(e)}
+              >
+                Truncate
+              </button>
+              <button className="btn" onClick={handleCancel}>
+                Cancel
+              </button>
+            </div>
+          </div>
+          <div className=" confirmContainer">
+            <h2>Confirm Clean Group 4</h2>
+            <div className="confirmContent">
+              <h1>Clear Filter Group4. Please Confirm</h1>
+              <p>
+                This will Truncate the filter table. Cancel if you change your
+                mind
+              </p>
+            </div>
+            <div className="btnContainer">
+              <button
+                className="btn"
+                style={{ backgroundColor: " rgb(152, 12, 40)" }}
+                name="group4"
+                onClick={(e) => handleClearBulkFilter(e)}
+              >
+                Truncate
+              </button>
+              <button className="btn" onClick={handleCancel}>
+                Cancel
+              </button>
+            </div>
+          </div>
+          <div className=" confirmContainer">
+            <h2>Confirm Clean Group 5</h2>
+            <div className="confirmContent">
+              <h1>Clear Filter Group5. Please Confirm</h1>
+              <p>
+                This will Truncate the filter table. Cancel if you change your
+                mind
+              </p>
+            </div>
+            <div className="btnContainer">
+              <button
+                className="btn"
+                style={{ backgroundColor: " rgb(152, 12, 40)" }}
+                name="group5"
+                onClick={(e) => handleClearBulkFilter(e)}
+              >
+                Truncate
+              </button>
+              <button className="btn" onClick={handleCancel}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="contentContainer">
-        <div className=" confirmContainer">
-          <h2>Confirm</h2>
-          <div className="confirmContent">
-            <h1>Clear Filter ALL. Please Confirm</h1>
-            <p>
-              This will Truncate the filter table. Cancel if you change your
-              mind
-            </p>
-          </div>
-          <div className="btnContainer">
-            <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} name='all' onClick={(e)=>handleClearBulkFilter(e)}>
-              Truncate
-            </button>
-            <button className="btn" onClick={handleCancel}>Cancel</button>
-          </div>
-        </div>
-        <div className=" confirmContainer">
-          <h2>Confirm Clean Group 1</h2>
-          <div className="confirmContent">
-            <h1>Clear Filter Group1. Please Confirm</h1>
-            <p>
-              This will Truncate the filter table. Cancel if you change your
-              mind
-            </p>
-          </div>
-          <div className="btnContainer">
-            <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} name='group1' onClick={(e)=>handleClearBulkFilter(e)}>
-              Truncate
-            </button>
-            <button className="btn" onClick={handleCancel}>Cancel</button>
-          </div>
-        </div>
-        <div className=" confirmContainer">
-          <h2>Confirm Clean Group 2</h2>
-          <div className="confirmContent">
-            <h1>Clear Filter Group2. Please Confirm</h1>
-            <p>
-              This will Truncate the filter table. Cancel if you change your
-              mind
-            </p>
-          </div>
-          <div className="btnContainer">
-            <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} name='group2' onClick={(e)=>handleClearBulkFilter(e)}>
-              Truncate
-            </button>
-            <button className="btn" onClick={handleCancel}>Cancel</button>
-          </div>
-        </div>
-        <div className=" confirmContainer">
-          <h2>Confirm Clean Group 3</h2>
-          <div className="confirmContent">
-            <h1>Clear Filter Group3. Please Confirm</h1>
-            <p>
-              This will Truncate the filter table. Cancel if you change your
-              mind
-            </p>
-          </div>
-          <div className="btnContainer">
-            <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} name='group3' onClick={(e)=>handleClearBulkFilter(e)}>
-              Truncate
-            </button>
-            <button className="btn" onClick={handleCancel}>Cancel</button>
-          </div>
-        </div>
-        <div className=" confirmContainer">
-          <h2>Confirm Clean Group 4</h2>
-          <div className="confirmContent">
-            <h1>Clear Filter Group4. Please Confirm</h1>
-            <p>
-              This will Truncate the filter table. Cancel if you change your
-              mind
-            </p>
-          </div>
-          <div className="btnContainer">
-            <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} name='group4' onClick={(e)=>handleClearBulkFilter(e)}>
-              Truncate
-            </button>
-            <button className="btn" onClick={handleCancel}>Cancel</button>
-          </div>
-        </div>
-        <div className=" confirmContainer">
-          <h2>Confirm Clean Group 5</h2>
-          <div className="confirmContent">
-            <h1>Clear Filter Group5. Please Confirm</h1>
-            <p>
-              This will Truncate the filter table. Cancel if you change your
-              mind
-            </p>
-          </div>
-          <div className="btnContainer">
-            <button className="btn" style={{ backgroundColor: " rgb(152, 12, 40)" }} name='group5' onClick={(e)=>handleClearBulkFilter(e)}>
-              Truncate
-            </button>
-            <button className="btn" onClick={handleCancel}>Cancel</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 
